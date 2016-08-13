@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class HomeAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> datas;
+    private String[] tabTitles = {"精选", "发现", "作者","我的"};
 
 
     public HomeAdapter(FragmentManager fm) {
@@ -32,4 +33,8 @@ public class HomeAdapter extends FragmentPagerAdapter {
         return datas != null && datas.size() > 0 ? datas.size() : 0;
     }
 
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
+    }
 }

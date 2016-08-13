@@ -8,31 +8,62 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@android:color/white">
+
         <com.example.dllo.openeyes.TitleTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="Eyepetizer"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:padding="10dp"
-            android:layout_centerInParent="true"/>
+            android:textColor="#444444"
+            android:textSize="22dp" />
+        <!--搜索-->
         <ImageView
+            android:id="@+id/title_bar_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/guide_search"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:adjustViewBounds="true"/>
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+
+            android:src="@mipmap/guide_search" />
+        <!--菜单-->
+        <ImageView
+            android:id="@+id/title_bar_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:visibility="gone"
+            android:src="@mipmap/ic_menu_more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#d5d5d5" />
     </RelativeLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="@android:color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="#d5d5d5" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/main_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"></android.support.design.widget.TabLayout>
+        android:layout_height="45dp"
+        android:background="@android:color/white" />
+
 </LinearLayout>
