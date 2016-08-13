@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/author_brief_card_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/three_mins" />
+    <TextView
+        android:id="@+id/author_brief_card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饭盒Foodlink"
+        android:layout_toRightOf="@id/author_brief_card_icon"
+        android:layout_alignTop="@id/author_brief_card_icon"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/author_brief_card_subTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饭盒Foodlink"
+        android:layout_toRightOf="@id/author_brief_card_title"
+        android:layout_alignBottom="@id/author_brief_card_title"
+        android:layout_marginLeft="20sp"
+        android:textSize="10sp"
+        />
+    <TextView
+        android:id="@+id/author_brief_card_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饭盒话说多喝点水"
+        android:layout_toRightOf="@id/author_brief_card_icon"
+        android:layout_alignBottom="@id/author_brief_card_icon"
+        android:textSize="14sp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/ic_action_more_arrow_dark"/>
+
+</RelativeLayout>
