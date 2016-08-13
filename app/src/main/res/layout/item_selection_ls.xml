@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/selection_ls_bac_iv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/selection_ls_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试文字"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/selection_ls_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/selection_ls_bac_iv"
+        android:layout_marginBottom="60dp"/>
+
+    <TextView
+        android:id="@+id/selection_ls_duration_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="03.37"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/selection_ls_tv"
+        android:layout_alignTop="@id/selection_ls_tv"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/selection_ls_type_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#创意"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_toLeftOf="@id/selection_ls_tv"
+        android:layout_alignTop="@id/selection_ls_tv"
+        android:layout_marginRight="10dp"
+        />
+</RelativeLayout>
