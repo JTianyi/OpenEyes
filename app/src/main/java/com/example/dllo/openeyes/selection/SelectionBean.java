@@ -252,6 +252,7 @@ public class SelectionBean {
                 private int id;
                 private String title;
                 private String description;
+                private String text;
                 /**
                  * name : YouTube
                  * alias : youtube
@@ -454,6 +455,15 @@ public class SelectionBean {
 
                 public void setIdx(int idx) {
                     this.idx = idx;
+                }
+
+                public String getText() {
+                    return text;
+                }
+
+                public DataBean setText(String text) {
+                    this.text = text;
+                    return this;
                 }
 
                 public Object getShareAdTrack() {

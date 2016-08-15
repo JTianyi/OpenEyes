@@ -29,6 +29,7 @@ public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.
         return this;
     }
 
+
     @Override
     public SelectionReHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         SelectionReHolder holder=null;

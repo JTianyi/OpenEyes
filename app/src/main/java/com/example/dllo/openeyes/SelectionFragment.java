@@ -8,6 +8,8 @@ import com.example.dllo.openeyes.selection.MyListView;
 import com.example.dllo.openeyes.selection.SelectionBean;
 import com.example.dllo.openeyes.selection.SelectionLsAdapter;
 import com.example.dllo.openeyes.selection.SelectionReAdapter;
+import com.example.dllo.openeyes.tool.OkHttp;
+import com.example.dllo.openeyes.tool.OnHttpCallBack;
 
 import java.util.ArrayList;
 
@@ -32,29 +34,16 @@ public class SelectionFragment extends AbsBaseFragment{
 
     @Override
     protected void initDatas() {
-        reArrayList=new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            SelectionBean.SectionListBean.ItemListBean.DataBean bean=new SelectionBean.SectionListBean.ItemListBean.DataBean();
-            bean.setCategory("gg");
-            bean.setDuration(50);
-            bean.setTitle("但是代收款");
-            reArrayList.add(bean);
-        }
-        SelectionReAdapter adapter=new SelectionReAdapter(context);
-        adapter.setArrayList(reArrayList);
-        moreReView.setAdapter(adapter);
-        moreReView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+        OkHttp.getInstance().startRequest(NetUrls.SELECTION_URL, SelectionBean.class, new OnHttpCallBack<SelectionBean>() {
+            @Override
+            public void onSuccess(SelectionBean response) {
+               // lsArrayList=response.getSectionList().get(0).getItemList();
+            }
 
-        lsArrayList=new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            SelectionBean.SectionListBean.ItemListBean.DataBean bean=new SelectionBean.SectionListBean.ItemListBean.DataBean();
-            bean.setCategory("bb");
-            bean.setDuration(120);
-            bean.setTitle("发射多喝水");
-            lsArrayList.add(bean);
-        }
-        SelectionLsAdapter lsAdapter=new SelectionLsAdapter(context);
-        lsAdapter.setArrayList(lsArrayList);
-        listView.setAdapter(lsAdapter);
+            @Override
+            public void onError(Throwable ex) {
+
+            }
+        });
     }
 }
