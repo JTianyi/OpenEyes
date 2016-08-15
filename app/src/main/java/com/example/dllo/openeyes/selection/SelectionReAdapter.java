@@ -16,19 +16,17 @@ import java.util.ArrayList;
  * Created by dllo on 16/8/13.
  */
 public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.SelectionReHolder> {
-    private ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean> arrayList;
+    private ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean> arrayList;
     private Context context;
 
     public SelectionReAdapter(Context context) {
         this.context = context;
     }
 
-    public SelectionReAdapter setArrayList(ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean> arrayList) {
+    public SelectionReAdapter setArrayList(ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean> arrayList) {
         this.arrayList = arrayList;
-        notifyDataSetChanged();
         return this;
     }
-
 
     @Override
     public SelectionReHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,7 +41,7 @@ public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.
         holder.typeTV.setText(arrayList.get(position).getCategory());
         holder.durationTV.setText(arrayList.get(position).getDuration()+"");
         holder.titleTV.setText(arrayList.get(position).getTitle());
-        holder.bacIV.setImageResource(R.mipmap.ceshi);
+        PicassoInstance.getsInstance().setImage(arrayList.get(position).getCover().getFeed(),holder.bacIV);
     }
 
     @Override

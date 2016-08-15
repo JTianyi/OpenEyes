@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.TitleTextView;
 
+
 import java.util.ArrayList;
 
 /**
@@ -35,7 +36,7 @@ public class SelectionLsAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (arrayList.get(position).getType().equals("video")) {
+        if (arrayList.get(position).getDataType().equals("VideoBeanForClient")) {
             return TYPE_VIDEO;
         } else{
             return TYPE_TEXT;
@@ -93,9 +94,27 @@ public class SelectionLsAdapter extends BaseAdapter {
         }
         switch (type){
             case TYPE_VIDEO:
-                holder.durationTV.setText(arrayList.get(position).getDuration() + "");
+                int duration=arrayList.get(position).getDuration();
+                int min=duration/60;
+                int sec=duration%60;
+                if (min<10){
+                    holder.durationTV.setText("0"+min+"′"+sec+"″");
+                    if (sec<10){
+                        holder.durationTV.setText("0"+min+"′"+"0"+sec+"″");
+                    }
+                }else{
+                    if (sec<10){
+                        holder.durationTV.setText(min+"′"+"0"+sec+"″");
+                    }
+                }
                 holder.typeTV.setText(arrayList.get(position).getCategory());
                 holder.titleTV.setText(arrayList.get(position).getTitle());
+                SelectionBean.SectionListBean.ItemListBean.DataBean.AuthorBean bean=arrayList.get(position).getAuthor();
+                if (bean==null){
+                    holder.authorNameTV.setText("");
+                }else {
+                    holder.authorNameTV.setText(bean.getName());
+                }
                 PicassoInstance.getsInstance().setImage(arrayList.get(position).getCover().getFeed(),holder.bacIV);
                 break;
             case TYPE_TEXT:
@@ -107,13 +126,14 @@ public class SelectionLsAdapter extends BaseAdapter {
 
     class SelectionLsHolder {
         private ImageView bacIV;
-        private TextView titleTV, typeTV, durationTV;
+        private TextView titleTV, typeTV, durationTV,authorNameTV;
 
         public SelectionLsHolder(View view) {
             bacIV = (ImageView) view.findViewById(R.id.selection_ls_bac_iv);
             titleTV = (TextView) view.findViewById(R.id.selection_ls_title_tv);
             typeTV = (TextView) view.findViewById(R.id.selection_ls_type_tv);
             durationTV = (TextView) view.findViewById(R.id.selection_ls_duration_tv);
+            authorNameTV = (TextView) view.findViewById(R.id.selection_ls_author_name_tv);
         }
     }
     class SelectionLsTextHolder{

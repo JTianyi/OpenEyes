@@ -28,7 +28,6 @@
                     android:id="@+id/look_for_more_selection_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="查看更多精选"
                     android:textSize="15sp"
                     android:layout_centerInParent="true"
                     />
@@ -42,7 +41,7 @@
                     android:layout_marginLeft="10dp"/>
             </RelativeLayout>
             <ImageView
-                android:id="@+id/wonderful_time_iv"
+                android:id="@+id/selection_more_iv"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
