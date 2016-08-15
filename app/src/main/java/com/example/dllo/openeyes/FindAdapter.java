@@ -8,9 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.example.dllo.openeyes.selection.PicassoInstance;
 import com.youth.banner.Banner;
-
 import java.util.ArrayList;
 
 /**
@@ -20,6 +19,7 @@ public class FindAdapter extends BaseAdapter {
     private ArrayList<FindBean> beanArrayList;
     private Context context;
     private final int TYPE_BANNER = 0,TYPE_SQUARE = 1,TYPE_RECTANGLE =2,TYPE_COUNT = 3;
+    private String []bannerImgUrls = {"","","",""};
 
     public FindAdapter(Context context) {
         this.context = context;
@@ -100,7 +100,24 @@ public class FindAdapter extends BaseAdapter {
         }
         switch (type){
             case TYPE_BANNER:
-                
+                for (int i = 0; i < beanArrayList.get(position).getItemList().get(0).getData().getBannerList().size(); i++) {
+                 bannerImgUrls[i] = beanArrayList.get(position).getItemList().get(0).getData().getBannerList().get(i).getData().getImage();
+                }
+                //设置指示器(小圆点)
+                bannerHolder.banner.setBannerStyle(Banner.CIRCLE_INDICATOR);
+                //设置位置
+                bannerHolder.banner.setIndicatorGravity(Banner.CENTER);
+                bannerHolder.banner.setImages(bannerImgUrls);
+                break;
+            case TYPE_RECTANGLE:
+                PicassoInstance.getsInstance().setImage(beanArrayList.get(position).getItemList().get(3).getData().,rectangleHolder.rectangleIv);
+                break;
+            case TYPE_SQUARE:
+                PicassoInstance.getsInstance().setImage(NetUrls.FIND_URL,squareHolder.findSquareIv);
+                for (int i = 0; i < beanArrayList.get(position).getItemList().size(); i++) {
+                squareHolder.findSquareTv.setText(beanArrayList.get(position).getItemList().get(i).getData());
+
+                }
         }
         return convertView;
     }
