@@ -6,7 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ListView;
 
 /**
  * Created by dllo on 16/8/12.
@@ -60,6 +62,5 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         intent.putExtras(values);
         startActivity(intent);
     }
-
 
 }

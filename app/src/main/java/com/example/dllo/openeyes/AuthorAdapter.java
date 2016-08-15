@@ -1,24 +1,40 @@
 package com.example.dllo.openeyes;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/8/15.
+ *
+ * @author jiangtianyi
  */
 public class AuthorAdapter extends BaseAdapter {
     private Context context;
-    private AuthorBean bean;
+    private AuthorFragmentBean bean;
     private final int TYPE_LEFT_ALIGN_TEXT_HEADER = 0, TYPE_BRIEF_CARD = 1, TYPE_BLANK_CARD = 2,
             TYPE_VIDEO_COLLECTION_WITH_BRIEF = 3, TYPE_COUNT = 4;
     //TYPE_VIDEO_BEAN_FOR_CLIENT = 4,
 
+
+    public AuthorAdapter(Context context) {
+        this.context = context;
+    }
+
+    public void setBean(AuthorFragmentBean bean) {
+        this.bean = bean;
+        notifyDataSetChanged();
+        Log.d("AuthorAdapter", "bean.getItemList().size():" + bean.getItemList().size());
+
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -56,19 +72,42 @@ public class AuthorAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        LeftAlignTextHeaderHolder headerHolder = null;
+        BriefCardHolder briefCardHolder = null;
+        VideoCollectionWithBriefHolder videoHolder = null;
         int type = getItemViewType(position);
-        LeftAlignTextHeaderHolder leftAlignTextHeaderHolder=null;
-
         if (convertView == null) {
             switch (type) {
                 case TYPE_LEFT_ALIGN_TEXT_HEADER:
                     convertView = LayoutInflater.from(context).inflate(R.layout.item_author_left_align_text_header, parent, false);
-                    leftAlignTextHeaderHolder=new LeftAlignTextHeaderHolder(convertView);
-                    convertView.setTag(leftAlignTextHeaderHolder);
+                    headerHolder = new LeftAlignTextHeaderHolder(convertView);
+                    convertView.setTag(headerHolder);
+                    break;
+                case TYPE_BRIEF_CARD:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_author_brief_card, parent, false);
+                    briefCardHolder = new BriefCardHolder(convertView);
+                    convertView.setTag(briefCardHolder);
+                    break;
+                case TYPE_BLANK_CARD:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_author_blank_card, parent, false);
+
+                    break;
+                case TYPE_VIDEO_COLLECTION_WITH_BRIEF:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_author_video_collection_with_brief, parent, false);
+                    videoHolder = new VideoCollectionWithBriefHolder(convertView);
+                    convertView.setTag(videoHolder);
+                    break;
+            }
+
+
+        } else {
+            switch (type) {
+                case TYPE_LEFT_ALIGN_TEXT_HEADER:
+                    headerHolder = (LeftAlignTextHeaderHolder) convertView.getTag();
                     break;
                 case TYPE_BRIEF_CARD:
 
-
+                    briefCardHolder = (BriefCardHolder) convertView.getTag();
                     break;
                 case TYPE_BLANK_CARD:
 
@@ -76,10 +115,33 @@ public class AuthorAdapter extends BaseAdapter {
                     break;
                 case TYPE_VIDEO_COLLECTION_WITH_BRIEF:
 
-
+                    videoHolder = (VideoCollectionWithBriefHolder) convertView.getTag();
                     break;
             }
+
         }
+
+        switch (type) {
+            case TYPE_LEFT_ALIGN_TEXT_HEADER:
+                headerHolder.text.setText(bean.getItemList().get(position).getData().getText());
+                break;
+            case TYPE_BRIEF_CARD:
+                briefCardHolder.descriptionTv.setText(bean.getItemList().get(position).getData().getDescription());
+                briefCardHolder.titleTv.setText(bean.getItemList().get(position).getData().getText());
+                briefCardHolder.subTitleTv.setText(bean.getItemList().get(position).getData().getSubTitle());
+
+                break;
+            case TYPE_BLANK_CARD:
+
+
+                break;
+            case TYPE_VIDEO_COLLECTION_WITH_BRIEF:
+
+
+                break;
+        }
+
+
         return convertView;
     }
 
@@ -91,6 +153,31 @@ public class AuthorAdapter extends BaseAdapter {
         }
     }
 
+    class BriefCardHolder {
+        private CircleImageView iconImg;
+        private TextView titleTv, subTitleTv, descriptionTv;
+
+        public BriefCardHolder(View view) {
+            iconImg = (CircleImageView) view.findViewById(R.id.author_brief_card_icon);
+            titleTv = (TextView) view.findViewById(R.id.author_brief_card_title);
+            subTitleTv = (TextView) view.findViewById(R.id.author_brief_card_subTitle);
+            descriptionTv = (TextView) view.findViewById(R.id.author_brief_card_description);
+        }
+    }
+
+    class VideoCollectionWithBriefHolder {
+        private CircleImageView iconImg;
+        private TextView titleTv, subTitleTv, descriptionTv;
+        private RecyclerView recyclerView;
+
+        public VideoCollectionWithBriefHolder(View view) {
+            iconImg = (CircleImageView) view.findViewById(R.id.author_brief_card_icon);
+            titleTv = (TextView) view.findViewById(R.id.author_brief_card_title);
+            subTitleTv = (TextView) view.findViewById(R.id.author_brief_card_subTitle);
+            descriptionTv = (TextView) view.findViewById(R.id.author_brief_card_description);
+            recyclerView = (RecyclerView) view.findViewById(R.id.author_video_collection_with_brief_recyclerview);
+        }
+    }
 
 
 }
