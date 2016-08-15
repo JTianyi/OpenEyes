@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <ImageView
-        android:id="@+id/find_iv"
+        android:id="@+id/find_square_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:scaleType="centerCrop"/>
     <TextView
-        android:id="@+id/find_tv"
+        android:id="@+id/find_square_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="11"

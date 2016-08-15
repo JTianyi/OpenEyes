@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class FindAdapter extends BaseAdapter {
     private ArrayList<FindBean> beanArrayList;
     private Context context;
+    private final int TYPE_BANNER = 0,TYPE_SQUARE = 1,TYPE_RECTANGLE =2,TYPE_COUNT = 3;
 
     public FindAdapter(Context context) {
         this.context = context;
@@ -26,6 +28,22 @@ public class FindAdapter extends BaseAdapter {
     public void setBeanArrayList(ArrayList<FindBean> beanArrayList) {
         this.beanArrayList = beanArrayList;
         notifyDataSetChanged();
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return TYPE_COUNT;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position==0){
+            return TYPE_BANNER;
+        }else if(position==2){
+            return TYPE_RECTANGLE;
+        }else {
+            return TYPE_SQUARE;
+        }
     }
 
     @Override
@@ -45,23 +63,65 @@ public class FindAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FindHolder holder = null;
+        FindSquareHolder squareHolder = null;
+        FindRectangleHolder rectangleHolder = null;
+        FindBannerHolder bannerHolder = null;
+        int type = getItemViewType(position);
         if (convertView ==null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_find,parent,false);
-            holder = new FindHolder(convertView);
-            convertView.setTag(holder);
+            switch (type){
+                case TYPE_BANNER:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_find_banner,parent,false);
+                    bannerHolder = new FindBannerHolder(convertView);
+                    convertView.setTag(bannerHolder);
+                    break;
+                case TYPE_RECTANGLE:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_find_rectangle,parent,false);
+                    rectangleHolder = new FindRectangleHolder(convertView);
+                    convertView.setTag(rectangleHolder);
+                    break;
+                case TYPE_SQUARE:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_find_square,parent,false);
+                    squareHolder = new FindSquareHolder(convertView);
+                    convertView.setTag(squareHolder);
+                    break;
+            }
         }else {
-            holder = (FindHolder) convertView.getTag();
+            switch (type){
+                case TYPE_BANNER:
+                    bannerHolder = (FindBannerHolder) convertView.getTag();
+                    break;
+                case TYPE_RECTANGLE:
+                    rectangleHolder = (FindRectangleHolder) convertView.getTag();
+                    break;
+                case TYPE_SQUARE:
+                    squareHolder = (FindSquareHolder) convertView.getTag();
+                    break;
+            }
         }
-        Picasso.with(context).load(ImgUrls.FIND_URL).into(holder.findIv);
+        switch (type){
+            case TYPE_BANNER:
+                
+        }
         return convertView;
     }
-    class FindHolder {
-        private ImageView findIv;
-        private TextView findTv;
-        public FindHolder(View view) {
-            findIv = (ImageView) view.findViewById(R.id.find_iv);
-            findTv = (TextView) view.findViewById(R.id.find_tv);
+    class FindSquareHolder {
+        private ImageView findSquareIv;
+        private TextView findSquareTv;
+        public FindSquareHolder(View view) {
+            findSquareIv = (ImageView) view.findViewById(R.id.find_square_iv);
+            findSquareTv = (TextView) view.findViewById(R.id.find_square_tv);
+        }
+    }
+    class FindRectangleHolder{
+        private ImageView rectangleIv;
+        public FindRectangleHolder(View view) {
+            rectangleIv = (ImageView) view.findViewById(R.id.find_rectangle_iv);
+        }
+    }
+    class FindBannerHolder{
+        private Banner banner;
+        public FindBannerHolder(View view) {
+            banner = (Banner) view.findViewById(R.id.find_banner);
         }
     }
 }
