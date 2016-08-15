@@ -53,7 +53,7 @@ public class FindAdapter extends BaseAdapter {
         }else {
             holder = (FindHolder) convertView.getTag();
         }
-        Picasso.with(context).load(ImgUrls.FIND_URL).into(holder.findIv);
+        Picasso.with(context).load(NetUrls.FIND_URL).into(holder.findIv);
         return convertView;
     }
     class FindHolder {
