@@ -253,6 +253,8 @@ public class SelectionBean {
                 private String title;
                 private String description;
                 private String text;
+                private HeaderBean header;
+                private List<ChildItemListBean> itemList;
                 /**
                  * name : YouTube
                  * alias : youtube
@@ -261,7 +263,7 @@ public class SelectionBean {
 
                 private ProviderBean provider;
                 private String category;
-                private Object author;
+                private AuthorBean author;
                 /**
                  * feed : http://img.wdjimg.com/image/video/37fceeaada61064901f69f23340d489b_0_0.jpeg
                  * detail : http://img.wdjimg.com/image/video/37fceeaada61064901f69f23340d489b_0_0.jpeg
@@ -337,6 +339,24 @@ public class SelectionBean {
                     this.id = id;
                 }
 
+                public HeaderBean getHeader() {
+                    return header;
+                }
+
+                public DataBean setHeader(HeaderBean header) {
+                    this.header = header;
+                    return this;
+                }
+
+                public List<ChildItemListBean> getItemList() {
+                    return itemList;
+                }
+
+                public DataBean setItemList(List<ChildItemListBean> itemList) {
+                    this.itemList = itemList;
+                    return this;
+                }
+
                 public String getTitle() {
                     return title;
                 }
@@ -369,12 +389,13 @@ public class SelectionBean {
                     this.category = category;
                 }
 
-                public Object getAuthor() {
+                public AuthorBean getAuthor() {
                     return author;
                 }
 
-                public void setAuthor(Object author) {
+                public DataBean setAuthor(AuthorBean author) {
                     this.author = author;
+                    return this;
                 }
 
                 public CoverBean getCover() {
@@ -772,6 +793,181 @@ public class SelectionBean {
 
                     public void setAdTrack(Object adTrack) {
                         this.adTrack = adTrack;
+                    }
+                }
+
+                public class AuthorBean {
+                    private String name;
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public AuthorBean setName(String name) {
+                        this.name = name;
+                        return this;
+                    }
+                }
+
+                public class HeaderBean {
+                    private int id;
+                    private String cover;
+                    private String actionUrl;
+
+                    public int getId() {
+                        return id;
+                    }
+
+                    public HeaderBean setId(int id) {
+                        this.id = id;
+                        return this;
+                    }
+
+                    public String getCover() {
+                        return cover;
+                    }
+
+                    public HeaderBean setCover(String cover) {
+                        this.cover = cover;
+                        return this;
+                    }
+
+                    public String getActionUrl() {
+                        return actionUrl;
+                    }
+
+                    public HeaderBean setActionUrl(String actionUrl) {
+                        this.actionUrl = actionUrl;
+                        return this;
+                    }
+                }
+
+                public class ChildItemListBean {
+                    private String type;
+                    private ChildDataBean data;
+
+                    public String getType() {
+                        return type;
+                    }
+
+                    public ChildItemListBean setType(String type) {
+                        this.type = type;
+                        return this;
+                    }
+
+                    public ChildDataBean getData() {
+                        return data;
+                    }
+
+                    public ChildItemListBean setData(ChildDataBean data) {
+                        this.data = data;
+                        return this;
+                    }
+
+                    public class ChildDataBean {
+                        private int id;
+                        private String title;
+                        private String description;
+                        private String category;
+                        private String playUrl;
+                        private int duration;
+                        private ChildCoverBean cover;
+
+                        public int getId() {
+                            return id;
+                        }
+
+                        public ChildDataBean setId(int id) {
+                            this.id = id;
+                            return this;
+                        }
+
+                        public ChildCoverBean getCover() {
+                            return cover;
+                        }
+
+                        public ChildDataBean setCover(ChildCoverBean cover) {
+                            this.cover = cover;
+                            return this;
+                        }
+
+                        public String getTitle() {
+                            return title;
+                        }
+
+                        public ChildDataBean setTitle(String title) {
+                            this.title = title;
+                            return this;
+                        }
+
+                        public String getDescription() {
+                            return description;
+                        }
+
+                        public ChildDataBean setDescription(String description) {
+                            this.description = description;
+                            return this;
+                        }
+
+                        public String getCategory() {
+                            return category;
+                        }
+
+                        public ChildDataBean setCategory(String category) {
+                            this.category = category;
+                            return this;
+                        }
+
+                        public String getPlayUrl() {
+                            return playUrl;
+                        }
+
+                        public ChildDataBean setPlayUrl(String playUrl) {
+                            this.playUrl = playUrl;
+                            return this;
+                        }
+
+                        public int getDuration() {
+                            return duration;
+                        }
+
+                        public ChildDataBean setDuration(int duration) {
+                            this.duration = duration;
+                            return this;
+                        }
+
+                        public class ChildCoverBean {
+                            private String feed;
+                            private String detail;
+                            private String blurred;
+
+                            public String getFeed() {
+                                return feed;
+                            }
+
+                            public ChildCoverBean setFeed(String feed) {
+                                this.feed = feed;
+                                return this;
+                            }
+
+                            public String getDetail() {
+                                return detail;
+                            }
+
+                            public ChildCoverBean setDetail(String detail) {
+                                this.detail = detail;
+                                return this;
+                            }
+
+                            public String getBlurred() {
+                                return blurred;
+                            }
+
+                            public ChildCoverBean setBlurred(String blurred) {
+                                this.blurred = blurred;
+                                return this;
+                            }
+                        }
                     }
                 }
             }
