@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 <com.example.dllo.openeyes.selection.PullDownScrollView
+    android:id="@+id/refresh_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -40,12 +41,12 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"/>
             </RelativeLayout>
-            <ImageView
+            <com.example.dllo.openeyes.selection.RecyclableImageView
                 android:id="@+id/selection_more_iv"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher"/>
+                />
              <android.support.v7.widget.RecyclerView
                  android:id="@+id/selection_re"
                  android:layout_width="match_parent"
@@ -62,9 +63,9 @@
                 android:layout_height="5dp"
                 android:background="#d5d5d5"/>
             <TextView
+                android:id="@+id/latest_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="最近最新更新作者"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:layout_marginTop="20dp"
@@ -72,16 +73,29 @@
                 android:textStyle="bold"/>
         <include layout="@layout/first_item_latest_update_author"/>
         <include layout="@layout/second_item_latest_update_author"/>
-
-
-
-
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/look_for_more_author_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_centerInParent="true"
+                />
+            <ImageView
+                android:id="@+id/go_to_more_author_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/go_to"
+                android:layout_toRightOf="@id/look_for_more_author_tv"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
 
     </LinearLayout>
-
-
-
-
 
     </ScrollView>
 

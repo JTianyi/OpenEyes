@@ -21,8 +21,11 @@ public class PicassoInstance {
         return sPicasso;
     }
     public void setImage(String url, ImageView iv){
-        Picasso.with(App.getContext()).load(url).into(iv);
+        Picasso.with(App.getContext())
+                .load(url)
+                .into(iv);
     }
+
 
 
 }
