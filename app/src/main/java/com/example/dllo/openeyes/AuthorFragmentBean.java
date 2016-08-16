@@ -89,8 +89,7 @@ public class AuthorFragmentBean {
             private String nextPageUrl;
 
             private HeaderBean header;
-
-            private List<NItemListBean> nItemList;
+            private List<NItemListBean> itemList;
 
             public HeaderBean getHeader() {
                 return header;
@@ -213,12 +212,12 @@ public class AuthorFragmentBean {
                 this.nextPageUrl = nextPageUrl;
             }
 
-            public void setnItemList(List<NItemListBean> nItemList) {
-                this.nItemList = nItemList;
+            public void setItemList(List<NItemListBean> itemList) {
+                this.itemList = itemList;
             }
 
-            public List<NItemListBean> getnItemList() {
-                return nItemList;
+            public List<NItemListBean> getItemList() {
+                return itemList;
             }
 
             public static class HeaderBean {
@@ -290,7 +289,7 @@ public class AuthorFragmentBean {
 
             public static class NItemListBean {
                 private String type;
-                private NDataBean nData;
+                private NDataBean data;
 
                 public String getType() {
                     return type;
@@ -300,12 +299,12 @@ public class AuthorFragmentBean {
                     this.type = type;
                 }
 
-                public void setnData(NDataBean nData) {
-                    this.nData = nData;
+                public void setData(NDataBean data) {
+                    this.data = data;
                 }
 
-                public NDataBean getnData() {
-                    return nData;
+                public NDataBean getData() {
+                    return data;
                 }
 
                 public static class NDataBean {
