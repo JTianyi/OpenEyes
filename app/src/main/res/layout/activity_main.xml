@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".ui.activity.HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@android:color/white">
 
-        <com.example.dllo.openeyes.TitleTextView
+        <com.example.dllo.openeyes.view.TitleTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"

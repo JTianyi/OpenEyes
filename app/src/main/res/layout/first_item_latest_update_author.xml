@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.example.dllo.openeyes.selection.RoundImage
+        <com.example.dllo.openeyes.tools.RoundImage
             android:id="@+id/first_latest_logo_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
