@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:layout_margin="1.5dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="#B4B4B4"/>
     <TextView
         android:id="@+id/find_square_tv"
         android:layout_width="wrap_content"

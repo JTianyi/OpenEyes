@@ -1,24 +1,20 @@
 package com.example.dllo.openeyes;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.dllo.openeyes.selection.PicassoInstance;
 import com.example.dllo.openeyes.tool.DensityUtils;
-import com.example.dllo.openeyes.tool.ModuleUtilsInstance;
-import com.example.dllo.openeyes.tool.OkHttp;
 import com.example.dllo.openeyes.tool.ScreenUtilsInstance;
-import java.util.ArrayList;
 
 /**
  * Created by mac on 16/8/12.
  * 发现界面适配器
+ * @author wangweijian
  */
 public class FindAdapter extends BaseAdapter {
     private FindBean findBean;
