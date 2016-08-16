@@ -43,23 +43,6 @@ public class HomeActivity extends AbsBaseActivity {
         tabLayout.setupWithViewPager(viewPager);
         setTabIcon();
         changeTitleBarIcon();
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
 
     }
 
@@ -90,14 +73,15 @@ public class HomeActivity extends AbsBaseActivity {
 
     private void setTabIcon() {
 
-        View SelectionView=getLayoutInflater().inflate(R.layout.tab_selection,null);
-        tabLayout.getTabAt(0).setCustomView(SelectionView);
-        View FindView=getLayoutInflater().inflate(R.layout.tab_find,null);
-        tabLayout.getTabAt(1).setCustomView(FindView);
-        View AuthorView=getLayoutInflater().inflate(R.layout.tab_author,null);
-        tabLayout.getTabAt(2).setCustomView(AuthorView);
-        View MineView=getLayoutInflater().inflate(R.layout.tab_mine,null);
-        tabLayout.getTabAt(3).setCustomView(MineView);
+        View selectionView=getLayoutInflater().inflate(R.layout.tab_selection,null);
+        tabLayout.getTabAt(0).setCustomView(selectionView);
+        View findView=getLayoutInflater().inflate(R.layout.tab_find,null);
+        tabLayout.getTabAt(1).setCustomView(findView);
+        View authorView=getLayoutInflater().inflate(R.layout.tab_author,null);
+        tabLayout.getTabAt(2).setCustomView(authorView);
+        View mineView=getLayoutInflater().inflate(R.layout.tab_mine,null);
+        tabLayout.getTabAt(3).setCustomView(mineView);
+        tabLayout.setSelectedTabIndicatorHeight(0);
 
     }
 

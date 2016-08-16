@@ -66,8 +66,7 @@ public class SelectionBean {
     public static class SectionListBean {
         private int id;
         private String type;
-        private Object header;
-
+        private FatherHeaderBean header;
 
         private FooterBean footer;
         private int count;
@@ -91,12 +90,13 @@ public class SelectionBean {
             this.type = type;
         }
 
-        public Object getHeader() {
+        public FatherHeaderBean getHeader() {
             return header;
         }
 
-        public void setHeader(Object header) {
+        public SectionListBean setHeader(FatherHeaderBean header) {
             this.header = header;
+            return this;
         }
 
         public FooterBean getFooter() {
@@ -812,6 +812,10 @@ public class SelectionBean {
                 public class HeaderBean {
                     private int id;
                     private String cover;
+                    private String icon;
+                    private String description;
+                    private String title;
+                    private String subTitle;
                     private String actionUrl;
 
                     public int getId() {
@@ -820,6 +824,42 @@ public class SelectionBean {
 
                     public HeaderBean setId(int id) {
                         this.id = id;
+                        return this;
+                    }
+
+                    public String getIcon() {
+                        return icon;
+                    }
+
+                    public HeaderBean setIcon(String icon) {
+                        this.icon = icon;
+                        return this;
+                    }
+
+                    public String getDescription() {
+                        return description;
+                    }
+
+                    public HeaderBean setDescription(String description) {
+                        this.description = description;
+                        return this;
+                    }
+
+                    public String getTitle() {
+                        return title;
+                    }
+
+                    public HeaderBean setTitle(String title) {
+                        this.title = title;
+                        return this;
+                    }
+
+                    public String getSubTitle() {
+                        return subTitle;
+                    }
+
+                    public HeaderBean setSubTitle(String subTitle) {
+                        this.subTitle = subTitle;
                         return this;
                     }
 
@@ -969,6 +1009,42 @@ public class SelectionBean {
                             }
                         }
                     }
+                }
+            }
+        }
+
+        public class FatherHeaderBean {
+            private String type;
+            private FatherDataBean data;
+
+            public String getType() {
+                return type;
+            }
+
+            public FatherHeaderBean setType(String type) {
+                this.type = type;
+                return this;
+            }
+
+            public FatherDataBean getData() {
+                return data;
+            }
+
+            public FatherHeaderBean setData(FatherDataBean data) {
+                this.data = data;
+                return this;
+            }
+
+            public class FatherDataBean {
+                private String text;
+
+                public String getText() {
+                    return text;
+                }
+
+                public FatherDataBean setText(String text) {
+                    this.text = text;
+                    return this;
                 }
             }
         }

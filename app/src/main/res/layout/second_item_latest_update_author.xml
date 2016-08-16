@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <com.example.dllo.openeyes.selection.RoundImage
             android:id="@+id/second_latest_logo_iv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_margin="10dp"/>
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:is_round="true"/>
         <TextView
             android:id="@+id/second_latest_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="测试标题"
             android:layout_alignTop="@id/second_latest_logo_iv"
             android:layout_toRightOf="@id/second_latest_logo_iv"
-            android:textSize="16sp"
+            android:layout_marginTop="5dp"
             android:textStyle="bold"
             />
         <TextView
+            android:id="@+id/second_latest_video_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="共5个视频"
             android:textSize="13sp"
+            android:layout_marginTop="5dp"
             android:layout_alignBottom="@id/second_latest_title_tv"
             android:layout_toRightOf="@id/second_latest_title_tv"
             android:layout_marginLeft="15dp"/>
         <TextView
+            android:id="@+id/second_latest_description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="加 加快 京东快递简单担惊受恐 几点开始就的电视剧都的简单了就是点击肯定"
             android:textSize="14sp"
+            android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/second_latest_logo_iv"
             android:layout_toRightOf="@id/second_latest_logo_iv"
             android:ellipsize="end"
@@ -46,7 +47,8 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/go_to"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            />
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/second_latest_re"

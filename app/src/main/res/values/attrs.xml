@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--name 设置成我的自定义组件的类名-->
+    <declare-styleable name="RoundImage">
+        <!--
+        arrr name 就是我们自己定义的属性的名字
+        format 里面是属性的内容
+        全小写
+        -->
+        <attr name="is_round" format="boolean"></attr>
+
+
+    </declare-styleable>
+</resources>
