@@ -6,7 +6,6 @@
         android:id="@+id/selection_ls_bac_iv"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@mipmap/ic_launcher"
         android:scaleType="centerCrop"/>
     <TextView
         android:id="@+id/selection_ls_title_tv"

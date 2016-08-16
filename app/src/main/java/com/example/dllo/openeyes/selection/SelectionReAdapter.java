@@ -39,7 +39,19 @@ public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.
     @Override
     public void onBindViewHolder(SelectionReHolder holder, int position) {
         holder.typeTV.setText(arrayList.get(position).getCategory());
-        holder.durationTV.setText(arrayList.get(position).getDuration()+"");
+        int duration=arrayList.get(position).getDuration();
+        int min=duration/60;
+        int sec=duration%60;
+        if (min<10){
+            holder.durationTV.setText("0"+min+"′"+sec+"″");
+            if (sec<10){
+                holder.durationTV.setText("0"+min+"′"+"0"+sec+"″");
+            }
+        }else{
+            if (sec<10){
+                holder.durationTV.setText(min+"′"+"0"+sec+"″");
+            }
+        }
         holder.titleTV.setText(arrayList.get(position).getTitle());
         PicassoInstance.getsInstance().setImage(arrayList.get(position).getCover().getFeed(),holder.bacIV);
     }
