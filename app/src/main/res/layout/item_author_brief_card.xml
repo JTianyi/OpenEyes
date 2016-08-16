@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/author_brief_card_icon"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_margin="17dp"
+        android:src="@mipmap/three_mins" />
+    <TextView
+        android:id="@+id/author_brief_card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饭盒Foodlink"
+        android:textColor="#444444"
+        android:layout_toRightOf="@id/author_brief_card_icon"
+        android:layout_alignTop="@id/author_brief_card_icon"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/author_brief_card_subTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饭盒Foodlink"
+        android:layout_toRightOf="@id/author_brief_card_title"
+        android:layout_alignBottom="@id/author_brief_card_title"
+        android:layout_marginLeft="20sp"
+
+        android:textSize="12sp"
+        />
+    <TextView
+        android:id="@+id/author_brief_card_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="饭盒话说多喝点水"
+        android:layout_toRightOf="@id/author_brief_card_icon"
+        android:layout_alignBottom="@id/author_brief_card_icon"
+        android:textSize="13sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="#444444"
+        android:maxEms="18"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/ic_action_more_arrow_dark"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/author_brief_card_icon"
+        android:layout_marginLeft="17dp"
+        android:background="#d5d5d5" />
+
+</RelativeLayout>
