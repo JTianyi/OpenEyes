@@ -12,7 +12,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
         android:textSize="14sp"
-        android:text="热 门 作 者" />
+        android:text="热门作者" />
 
     <View
         android:layout_width="match_parent"
