@@ -1,5 +1,6 @@
 package com.example.dllo.openeyes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class FindBean {
      * data : {"dataType":"HorizontalScrollCard","itemList":[{"type":"banner1","data":{"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/475e1691e682d303807aa3829efc57cc_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E6%98%AF%E4%B8%80%E5%8F%AA%E7%8C%AB%E5%A5%B4&url=http%3A%2F%2Fwww.wandoujia.com%2Feyepetizer%2Farticle.html%3Fnid%3D935%26shareable%3Dtrue","adTrack":null,"shade":false}},{"type":"banner2","data":{"dataType":"Banner","title":"听，泰国人把泰国攻略唱给你听","description":"","image":"http://img.wdjimg.com/image/video/2dd92ef88effa04656dd760e0cc5d404_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=visa&url=http%3A%2F%2Fm3.mgogo.com%2Fvisa%2F%3Fsite%3Dv2%26shareable%3Dtrue","adTrack":null,"shade":true}},{"type":"banner1","data":{"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/ab4b780fdae08bd3518c84cd5da0e568_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=%E5%85%B3%E4%BA%8E%E5%A4%8F%E5%A4%A9%E7%9A%84%E6%89%80%E6%9C%89%E9%81%90%E6%83%B3&url=http%3A%2F%2Fwww.wandoujia.com%2Feyepetizer%2Fcollection.html%3Fname%3Dsummer%26shareable%3Dtrue","adTrack":null,"shade":false}},{"type":"banner1","data":{"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/2c892eeefb675b22636ce6f71d2ec76c_0_0.png","actionUrl":"eyepetizer://recommend/","adTrack":null,"shade":false}}],"count":4}
      */
 
-    private List<ItemListBean> itemList;
+    private List<ItemListBean>itemList;
 
     public int getCount() {
         return count;
@@ -61,13 +62,7 @@ public class FindBean {
 
     public static class ItemListBean {
         private String type;
-        /**
-         * dataType : HorizontalScrollCard
-         * itemList : [{"type":"banner1","data":{"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/475e1691e682d303807aa3829efc57cc_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E6%98%AF%E4%B8%80%E5%8F%AA%E7%8C%AB%E5%A5%B4&url=http%3A%2F%2Fwww.wandoujia.com%2Feyepetizer%2Farticle.html%3Fnid%3D935%26shareable%3Dtrue","adTrack":null,"shade":false}},{"type":"banner2","data":{"dataType":"Banner","title":"听，泰国人把泰国攻略唱给你听","description":"","image":"http://img.wdjimg.com/image/video/2dd92ef88effa04656dd760e0cc5d404_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=visa&url=http%3A%2F%2Fm3.mgogo.com%2Fvisa%2F%3Fsite%3Dv2%26shareable%3Dtrue","adTrack":null,"shade":true}},{"type":"banner1","data":{"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/ab4b780fdae08bd3518c84cd5da0e568_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=%E5%85%B3%E4%BA%8E%E5%A4%8F%E5%A4%A9%E7%9A%84%E6%89%80%E6%9C%89%E9%81%90%E6%83%B3&url=http%3A%2F%2Fwww.wandoujia.com%2Feyepetizer%2Fcollection.html%3Fname%3Dsummer%26shareable%3Dtrue","adTrack":null,"shade":false}},{"type":"banner1","data":{"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/2c892eeefb675b22636ce6f71d2ec76c_0_0.png","actionUrl":"eyepetizer://recommend/","adTrack":null,"shade":false}}]
-         * count : 4
-         */
-
-        private BannerDataBean data;
+        private DataBean data;
 
         public String getType() {
             return type;
@@ -77,23 +72,72 @@ public class FindBean {
             this.type = type;
         }
 
-        public BannerDataBean getData() {
+        public DataBean getData() {
             return data;
         }
 
-        public void setData(BannerDataBean data) {
+        public void setData(DataBean data) {
             this.data = data;
         }
 
-        public static class BannerDataBean {
-            private String dataType;
+        public static class DataBean {
             private int count;
-            /**
-             * type : banner1
-             * data : {"dataType":"Banner","title":"","description":"","image":"http://img.wdjimg.com/image/video/475e1691e682d303807aa3829efc57cc_0_0.jpeg","actionUrl":"eyepetizer://webview/?title=%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E6%98%AF%E4%B8%80%E5%8F%AA%E7%8C%AB%E5%A5%B4&url=http%3A%2F%2Fwww.wandoujia.com%2Feyepetizer%2Farticle.html%3Fnid%3D935%26shareable%3Dtrue","adTrack":null,"shade":false}
-             */
+            private List<BannerDataBean> itemList;
+            private String dataType;
+            private String title;
+            private String description;
+            private String image;
+            private String actionUrl;
+            private Object adTrack;
+            private boolean shade;
 
-            private List<BannerListBean> bannerList;
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(String description) {
+                this.description = description;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public String getActionUrl() {
+                return actionUrl;
+            }
+
+            public void setActionUrl(String actionUrl) {
+                this.actionUrl = actionUrl;
+            }
+
+            public Object getAdTrack() {
+                return adTrack;
+            }
+
+            public void setAdTrack(Object adTrack) {
+                this.adTrack = adTrack;
+            }
+
+            public boolean isShade() {
+                return shade;
+            }
+
+            public void setShade(boolean shade) {
+                this.shade = shade;
+            }
 
             public String getDataType() {
                 return dataType;
@@ -111,28 +155,17 @@ public class FindBean {
                 this.count = count;
             }
 
-            public List<BannerListBean> getBannerList() {
-                return bannerList;
+            public List<BannerDataBean> getItemList() {
+                return itemList;
             }
 
-            public void setBannerList(List<BannerListBean> bannerList) {
-                this.bannerList = bannerList;
+            public void setItemList(List<BannerDataBean> itemList) {
+                this.itemList = itemList;
             }
 
-            public static class BannerListBean {
+            public static class BannerDataBean{
                 private String type;
-                /**
-                 * dataType : Banner
-                 * title :
-                 * description :
-                 * image : http://img.wdjimg.com/image/video/475e1691e682d303807aa3829efc57cc_0_0.jpeg
-                 * actionUrl : eyepetizer://webview/?title=%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E6%98%AF%E4%B8%80%E5%8F%AA%E7%8C%AB%E5%A5%B4&url=http%3A%2F%2Fwww.wandoujia.com%2Feyepetizer%2Farticle.html%3Fnid%3D935%26shareable%3Dtrue
-                 * adTrack : null
-                 * shade : false
-                 */
-
-                private BannerDataBean data;
-
+                private BannerDetailsBean data;
                 public String getType() {
                     return type;
                 }
@@ -141,15 +174,15 @@ public class FindBean {
                     this.type = type;
                 }
 
-                public BannerDataBean getData() {
+                public BannerDetailsBean getData() {
                     return data;
                 }
 
-                public void setData(BannerDataBean data) {
+                public void setData(BannerDetailsBean data) {
                     this.data = data;
                 }
 
-                public static class DataBean {
+                public static class BannerDetailsBean{
                     private String dataType;
                     private String title;
                     private String description;
@@ -214,7 +247,11 @@ public class FindBean {
                         this.shade = shade;
                     }
                 }
+
+
             }
+
+
         }
     }
 }

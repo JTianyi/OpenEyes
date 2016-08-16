@@ -77,7 +77,7 @@ public class OkHttpImpl implements NetWork {
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            callBack.onSuccess((T) resultBean);
+                            callBack.onSuccess(resultBean);
                         }
                     });
             }
