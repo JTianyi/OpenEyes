@@ -99,7 +99,6 @@ public class SelectionFragment extends AbsBaseFragment implements PullDownScroll
                     SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean bean=reListBean.get(i).getData();
                     reArrayList.add(bean);
                 }
-                Log.d("SelectionFragment", "reArrayList.size():" + reArrayList.size());
                 SelectionReAdapter reAdapter=new SelectionReAdapter(context);
                 reAdapter.setArrayList(reArrayList);
                 moreReView.setAdapter(reAdapter);
