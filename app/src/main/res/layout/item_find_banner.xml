@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <ListView
-        android:id="@+id/author_listview"
+    <com.youth.banner.Banner
+        android:id="@+id/find_banner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"/>
+        android:layout_height="150dp"></com.youth.banner.Banner>
+
 </LinearLayout>

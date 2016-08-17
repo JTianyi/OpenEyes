@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<com.example.dllo.openeyes.selection.PullDownScrollView
+<com.example.dllo.openeyes.tools.PullDownScrollView
     android:id="@+id/refresh_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <com.example.dllo.openeyes.selection.MyListView
+        <com.example.dllo.openeyes.view.MyListView
             android:id="@+id/selection_ls"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -41,7 +41,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"/>
             </RelativeLayout>
-            <com.example.dllo.openeyes.selection.RecyclableImageView
+            <com.example.dllo.openeyes.tools.RecyclableImageView
                 android:id="@+id/selection_more_iv"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -100,7 +100,7 @@
     </ScrollView>
 
 
-</com.example.dllo.openeyes.selection.PullDownScrollView>
+</com.example.dllo.openeyes.tools.PullDownScrollView>
 
 
 </LinearLayout>
