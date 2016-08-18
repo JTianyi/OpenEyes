@@ -6,15 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.dllo.openeyes.selection.PicassoInstance;
-import com.example.dllo.openeyes.tool.DensityUtils;
-import com.example.dllo.openeyes.tool.OkHttp;
-import com.example.dllo.openeyes.tool.OnHttpCallBack;
-import com.example.dllo.openeyes.tool.ScreenUtilsInstance;
+import com.example.dllo.openeyes.model.bean.FindBean;
+import com.example.dllo.openeyes.model.bean.FindNeedBean;
+import com.example.dllo.openeyes.model.net.NetUrls;
+import com.example.dllo.openeyes.tools.DensityUtils;
+import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+import com.example.dllo.openeyes.tools.OkHttp;
+import com.example.dllo.openeyes.tools.OnHttpCallBack;
+import com.example.dllo.openeyes.tools.PicassoInstance;
+import com.example.dllo.openeyes.ui.activity.FullShotActivity;
+import com.example.dllo.openeyes.ui.adapter.FindAdapter;
+import com.example.dllo.openeyes.view.HeaderGridView;
 import com.youth.banner.Banner;
 
 import com.example.dllo.openeyes.R;
-import com.example.dllo.openeyes.ui.fragment.AbsBaseFragment;
+
+import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/8/12.
@@ -22,11 +29,11 @@ import com.example.dllo.openeyes.ui.fragment.AbsBaseFragment;
  *
  * @author wangweijian
  */
-public class FindFragment extends AbsBaseFragment {
+public class FindFragment extends AbsBaseFragment implements View.OnClickListener {
     private HeaderGridView headerGridView;
     private FindBean findBean;
+    private ArrayList<FindNeedBean> beanArrayList;
     private FindAdapter findAdapter;
-    private String[] bannerUrls = {"","",""};
     private Banner banner;
 
     @Override
@@ -48,18 +55,18 @@ public class FindFragment extends AbsBaseFragment {
     }
 
     private void addOneData() {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_find_one,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_find_one, null);
         ImageView topIv = (ImageView) view.findViewById(R.id.find_top_iv);
         ImageView topicIv = (ImageView) view.findViewById(R.id.find_topic_iv);
         ImageView rectangleIv = (ImageView) view.findViewById(R.id.find_rectangle_iv);
-        PicassoInstance.getsInstance().setImage(findBean.getItemList().get(1).getData().getImage(),topIv);
-        PicassoInstance.getsInstance().setImage(findBean.getItemList().get(2).getData().getImage(),topicIv);
-        PicassoInstance.getsInstance().setImage(findBean.getItemList().get(3).getData().getImage(),rectangleIv);
+        PicassoInstance.getsInstance().setImage(findBean.getItemList().get(1).getData().getImage(), topIv);
+        PicassoInstance.getsInstance().setImage(findBean.getItemList().get(2).getData().getImage(), topicIv);
+        PicassoInstance.getsInstance().setImage(findBean.getItemList().get(3).getData().getImage(), rectangleIv);
         headerGridView.addHeaderView(view);
         //获取屏幕宽度
         int width = ScreenUtilsInstance.getsInstance().getScreenWidth(context);
         //将dp转换成px
-        int px = DensityUtils.dp2px(context,1.5f);
+        int px = DensityUtils.dp2px(context, 1.5f);
         //获取控件的布局
         ViewGroup.LayoutParams layoutParamsTop = topIv.getLayoutParams();
         ViewGroup.LayoutParams layoutParamsTopic = topicIv.getLayoutParams();
@@ -76,6 +83,7 @@ public class FindFragment extends AbsBaseFragment {
         layoutParamsRectangleIv.height = (width - px) / 2;
         //重新设置修改后的布局给控件
         rectangleIv.setLayoutParams(layoutParamsRectangleIv);
+        rectangleIv.setOnClickListener(this);
     }
 
 
@@ -94,7 +102,7 @@ public class FindFragment extends AbsBaseFragment {
         //获取控件的布局
         ViewGroup.LayoutParams layoutParams = banner.getLayoutParams();
         //修改控件
-        layoutParams.height = screenHeight*2/5;
+        layoutParams.height = screenHeight * 2 / 5;
         //重新设置给控件
         banner.setLayoutParams(layoutParams);
 
@@ -106,14 +114,27 @@ public class FindFragment extends AbsBaseFragment {
             public void onSuccess(FindBean response) {
                 findBean = new FindBean();
                 findBean = response;
+                FindNeedBean needBean;
+                beanArrayList = new ArrayList<>();
                 findAdapter = new FindAdapter(context);
-                findAdapter.setFindBean(findBean);
+                for (int i = 0; i < findBean.getItemList().size(); i++) {
+                    if (i > 3) {
+                        String needImage = findBean.getItemList().get(i).getData().getImage();
+                        String needTitle = findBean.getItemList().get(i).getData().getTitle();
+                        needBean = new FindNeedBean();
+                        needBean.setNeedImage(needImage);
+                        needBean.setNeedTitle(needTitle);
+                        beanArrayList.add(needBean);
+                    }
+                }
+                findAdapter.setBeanArrayList(beanArrayList);
                 headerGridView.setAdapter(findAdapter);
+                String[] bannerUrls = new String[findBean.getItemList().get(0).getData().getItemList().size()];
                 for (int i = 0; i < findBean.getItemList().get(0).getData().getItemList().size(); i++) {
                     bannerUrls[i] = findBean.getItemList().get(0).getData().getItemList().get(i).getData().getImage();
                     banner.setImages(bannerUrls);
                 }
-                //加载position=1的数据
+                //加载1 ,2位置的数据
                 addOneData();
             }
 
@@ -124,4 +145,12 @@ public class FindFragment extends AbsBaseFragment {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.find_rectangle_iv:
+                goTo(context, FullShotActivity.class);
+
+        }
+    }
 }

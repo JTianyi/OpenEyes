@@ -1,8 +1,7 @@
-package com.example.dllo.openeyes.tool;
+package com.example.dllo.openeyes.tools;
 
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 
 /**
  * Created by mac on 16/8/15.

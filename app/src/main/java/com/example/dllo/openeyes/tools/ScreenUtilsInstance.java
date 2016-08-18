@@ -1,4 +1,4 @@
-package com.example.dllo.openeyes.tool;
+package com.example.dllo.openeyes.tools;
 
 import android.content.Context;
 import android.view.WindowManager;
