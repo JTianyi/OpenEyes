@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="240dp"
+              android:layout_width="280dp"
               android:layout_height="wrap_content"
     android:layout_marginLeft="3dp"
     android:layout_marginTop="3dp">
@@ -8,7 +8,8 @@
         android:id="@+id/selection_re_bac_iv"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/selection_re_title_tv"
         android:layout_width="wrap_content"

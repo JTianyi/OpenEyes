@@ -7,15 +7,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b59d63e94c0b4326fb05257b1804f2f8912d3ae3
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.tools.PicassoInstance;
+<<<<<<< HEAD
 
 
 import com.example.dllo.openeyes.tools.DensityUtils;
 
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+=======
+import com.squareup.picasso.Picasso;
+import com.example.dllo.openeyes.tool.DensityUtils;
+import com.example.dllo.openeyes.tool.ModuleUtilsInstance;
+import com.example.dllo.openeyes.tool.ScreenUtilsInstance;
+import java.util.ArrayList;
+>>>>>>> b59d63e94c0b4326fb05257b1804f2f8912d3ae3
 
 /**
  * Created by mac on 16/8/12.

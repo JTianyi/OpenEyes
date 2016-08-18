@@ -12,7 +12,8 @@
         android:background="@android:color/white">
 
         <com.example.dllo.openeyes.view.TitleTextView
-            android:layout_width="match_parent"
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"

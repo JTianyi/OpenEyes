@@ -1,15 +1,22 @@
 package com.example.dllo.openeyes.ui.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.model.net.NetUrls;
+import com.example.dllo.openeyes.ui.activity.BeforeSelectionActivity;
 import com.example.dllo.openeyes.ui.fragment.AbsBaseFragment;
 import com.example.dllo.openeyes.view.MyListView;
 import com.example.dllo.openeyes.tools.PicassoInstance;
@@ -27,7 +34,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/8/12.
  */
-public class SelectionFragment extends AbsBaseFragment implements PullDownScrollView.RefreshListener {
+public class SelectionFragment extends AbsBaseFragment implements PullDownScrollView.RefreshListener, View.OnClickListener {
     private RecyclerView moreReView,firstReView,secondReView;
     private ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean> reArrayList,firstReArray,secondReArray;
     private ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean> lsArrayList;
@@ -35,6 +42,10 @@ public class SelectionFragment extends AbsBaseFragment implements PullDownScroll
     private TextView moreSelectionTV,latestTV,moreAuthorTV,firstLatestTitleTV,firstLatestDescriptionTV,firstLatestVideoCountTV,secondLatestTitleTV,secondLatestDescriptionTV,secondLatestVideoCountTV;
     private ImageView moreIV,firstAuthorIcon,secondAuthorIcon;
     private PullDownScrollView mPullDownScrollView;
+    private RelativeLayout beforeSelectRelayout;
+    private ScrollView scrollView;
+    private BackTopBroadcast backTopBroadcast;
+
 
     @Override
     protected int setLayout() {
@@ -50,6 +61,8 @@ public class SelectionFragment extends AbsBaseFragment implements PullDownScroll
         moreIV=byView(R.id.selection_more_iv);
         latestTV=byView(R.id.latest_tv);
         moreAuthorTV=byView(R.id.look_for_more_author_tv);
+        beforeSelectRelayout=byView(R.id.look_before_selection_relayout);
+        scrollView=byView(R.id.selection_scrollview);
 
         firstAuthorIcon=byView(R.id.first_latest_logo_iv);
         firstLatestDescriptionTV=byView(R.id.first_latest_description_tv);
@@ -102,7 +115,6 @@ public class SelectionFragment extends AbsBaseFragment implements PullDownScroll
                     SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean bean=reListBean.get(i).getData();
                     reArrayList.add(bean);
                 }
-                Log.d("SelectionFragment", "reArrayList.size():" + reArrayList.size());
                 SelectionReAdapter reAdapter=new SelectionReAdapter(context);
                 reAdapter.setArrayList(reArrayList);
                 moreReView.setAdapter(reAdapter);
@@ -139,8 +151,13 @@ public class SelectionFragment extends AbsBaseFragment implements PullDownScroll
         });
         mPullDownScrollView.setRefreshListener(this);
         mPullDownScrollView.setPullDownElastic(new PullDownElasticImp(context));
-
+        beforeSelectRelayout.setOnClickListener(this);
+        backTopBroadcast=new BackTopBroadcast();
+        IntentFilter intentFilter=new IntentFilter("com.example.dllo.openeyes.ui.BACK_TOP");
+        context.registerReceiver(backTopBroadcast,intentFilter);
     }
+
+
 
     @Override
     public void onRefresh(PullDownScrollView view) {
@@ -153,4 +170,27 @@ public class SelectionFragment extends AbsBaseFragment implements PullDownScroll
             }
         }, 2000);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.look_before_selection_relayout:
+                goTo(context, BeforeSelectionActivity.class);
+                break;
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        context.unregisterReceiver(backTopBroadcast);
+    }
+    class BackTopBroadcast extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            scrollView.scrollTo(0,0);
+
+        }
+    }
+
 }
