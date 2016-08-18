@@ -1,5 +1,9 @@
 package com.example.dllo.openeyes.model.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,12 +12,21 @@ import java.util.List;
  *
  * @author jiangtianyi
  */
-public class AuthorFragmentBean {
+public class AuthorFragmentBean  {
     private int count;
     private int total;
     private String nextPageUrl;
 
     private List<ItemListBean> itemList;
+
+    protected AuthorFragmentBean(Parcel in) {
+        count = in.readInt();
+        total = in.readInt();
+        nextPageUrl = in.readString();
+    }
+
+    public AuthorFragmentBean() {
+    }
 
     public int getCount() {
         return count;
@@ -46,6 +59,7 @@ public class AuthorFragmentBean {
     public void setItemList(List<ItemListBean> itemList) {
         this.itemList = itemList;
     }
+    
 
     public static class ItemListBean {
 
@@ -77,7 +91,7 @@ public class AuthorFragmentBean {
             private String subTitle;
             private String description;
             private String actionUrl;
-            private Object adTrack;
+            private String adTrack;
 
             private String text;
             private String font;
@@ -89,7 +103,7 @@ public class AuthorFragmentBean {
             private String nextPageUrl;
 
             private HeaderBean header;
-            private List<NItemListBean> itemList;
+            private ArrayList<NItemListBean> itemList;
 
             public HeaderBean getHeader() {
                 return header;
@@ -171,11 +185,11 @@ public class AuthorFragmentBean {
                 this.actionUrl = actionUrl;
             }
 
-            public Object getAdTrack() {
+            public String getAdTrack() {
                 return adTrack;
             }
 
-            public void setAdTrack(Object adTrack) {
+            public void setAdTrack(String adTrack) {
                 this.adTrack = adTrack;
             }
 
@@ -212,11 +226,11 @@ public class AuthorFragmentBean {
                 this.nextPageUrl = nextPageUrl;
             }
 
-            public void setItemList(List<NItemListBean> itemList) {
+            public void setItemList(ArrayList<NItemListBean> itemList) {
                 this.itemList = itemList;
             }
 
-            public List<NItemListBean> getItemList() {
+            public ArrayList<NItemListBean> getItemList() {
                 return itemList;
             }
 
@@ -227,7 +241,7 @@ public class AuthorFragmentBean {
                 private String subTitle;
                 private String description;
                 private String actionUrl;
-                private Object adTrack;
+                private String adTrack;
 
                 public int getId() {
                     return id;
@@ -277,19 +291,40 @@ public class AuthorFragmentBean {
                     this.actionUrl = actionUrl;
                 }
 
-                public Object getAdTrack() {
+                public String getAdTrack() {
                     return adTrack;
                 }
 
-                public void setAdTrack(Object adTrack) {
+                public void setAdTrack(String adTrack) {
                     this.adTrack = adTrack;
                 }
             }
 
 
-            public static class NItemListBean {
+            public static class NItemListBean implements Parcelable{
                 private String type;
                 private NDataBean data;
+
+
+                protected NItemListBean(Parcel in) {
+                    type = in.readString();
+                    data = in.readParcelable(NDataBean.class.getClassLoader());
+                }
+
+                public static final Creator<NItemListBean> CREATOR = new Creator<NItemListBean>() {
+                    @Override
+                    public NItemListBean createFromParcel(Parcel in) {
+                        return new NItemListBean(in);
+                    }
+
+                    @Override
+                    public NItemListBean[] newArray(int size) {
+                        return new NItemListBean[size];
+                    }
+                };
+
+                public NItemListBean() {
+                }
 
                 public String getType() {
                     return type;
@@ -307,83 +342,90 @@ public class AuthorFragmentBean {
                     return data;
                 }
 
-                public static class NDataBean {
+                @Override
+                public int describeContents() {
+                    return 0;
+                }
+
+                @Override
+                public void writeToParcel(Parcel dest, int flags) {
+                    dest.writeString(type);
+                    dest.writeParcelable(data, flags);
+                }
+
+
+                public static class NDataBean implements Parcelable{
                     private String dataType;
                     private int id;
                     private String title;
                     private String description;
-                    /**
-                     * name : YouTube
-                     * alias : youtube
-                     * icon : http://img.wdjimg.com/image/video/fa20228bc5b921e837156923a58713f6_256_256.png
-                     */
-
                     private ProviderBean provider;
                     private String category;
-                    /**
-                     * id : 134
-                     * icon : http://img.wdjimg.com/image/video/fef7cdcd26a44f0a30902838320d6b52_0_0.jpeg
-                     * name : GoPro
-                     * description : 用第一人称视角记录刺激的运动和温暖的生活。
-                     * link :
-                     * latestReleaseTime : 1471190400000
-                     * videoNum : 49
-                     * adTrack : null
-                     */
-
                     private AuthorBean author;
-                    /**
-                     * feed : http://img.wdjimg.com/image/video/1ea46d8f93b2a0c280947426e706f89e_0_0.jpeg
-                     * detail : http://img.wdjimg.com/image/video/1ea46d8f93b2a0c280947426e706f89e_0_0.jpeg
-                     * blurred : http://img.wdjimg.com/image/video/f662b5eed9fbf47b7e11956695df69d0_0_0.jpeg
-                     * sharing : null
-                     */
-
                     private CoverBean cover;
                     private String playUrl;
                     private int duration;
-                    /**
-                     * raw : http://www.wandoujia.com/eyepetizer/detail.html?vid=8656
-                     * forWeibo : http://wandou.im/2rgn0h
-                     */
-
                     private WebUrlBean webUrl;
                     private long releaseTime;
-                    /**
-                     * collectionCount : 44
-                     * shareCount : 81
-                     * replyCount : 5
-                     */
-
                     private ConsumptionBean consumption;
-                    private Object campaign;
-                    private Object waterMarks;
-                    private Object adTrack;
+                    private String campaign;
+                    private String waterMarks;
+                    private String adTrack;
                     private String type;
                     private int idx;
-                    private Object shareAdTrack;
-                    private Object favoriteAdTrack;
-                    private Object webAdTrack;
+                    private String shareAdTrack;
+                    private String favoriteAdTrack;
+                    private String webAdTrack;
                     private long date;
-                    private Object promotion;
-                    private Object label;
-                    /**
-                     * height : 360
-                     * width : 640
-                     * name : 流畅
-                     * type : low
-                     * url : http://baobab.wandoujia.com/api/v1/playUrl?vid=8656&editionType=low
-                     */
-
+                    private String promotion;
+                    private String label;
                     private List<PlayInfoBean> playInfo;
-                    /**
-                     * id : 4
-                     * name : 运动
-                     * actionUrl : eyepetizer://tag/4/?title=%E8%BF%90%E5%8A%A8
-                     * adTrack : null
-                     */
-
                     private List<TagsBean> tags;
+
+                    public NDataBean() {
+                    }
+
+
+                    protected NDataBean(Parcel in) {
+                        dataType = in.readString();
+                        id = in.readInt();
+                        title = in.readString();
+                        description = in.readString();
+                        provider = in.readParcelable(ProviderBean.class.getClassLoader());
+                        category = in.readString();
+                        author = in.readParcelable(AuthorBean.class.getClassLoader());
+                        cover = in.readParcelable(CoverBean.class.getClassLoader());
+                        playUrl = in.readString();
+                        duration = in.readInt();
+                        webUrl = in.readParcelable(WebUrlBean.class.getClassLoader());
+                        releaseTime = in.readLong();
+                        consumption = in.readParcelable(ConsumptionBean.class.getClassLoader());
+                        campaign = in.readString();
+                        waterMarks = in.readString();
+                        adTrack = in.readString();
+                        type = in.readString();
+                        idx = in.readInt();
+                        shareAdTrack = in.readString();
+                        favoriteAdTrack = in.readString();
+                        webAdTrack = in.readString();
+                        date = in.readLong();
+                        promotion = in.readString();
+                        label = in.readString();
+                        playInfo = in.createTypedArrayList(PlayInfoBean.CREATOR);
+                        tags = in.createTypedArrayList(TagsBean.CREATOR);
+                    }
+
+                    public static final Creator<NDataBean> CREATOR = new Creator<NDataBean>() {
+                        @Override
+                        public NDataBean createFromParcel(Parcel in) {
+                            return new NDataBean(in);
+                        }
+
+                        @Override
+                        public NDataBean[] newArray(int size) {
+                            return new NDataBean[size];
+                        }
+                    };
 
                     public String getDataType() {
                         return dataType;
@@ -489,27 +531,27 @@ public class AuthorFragmentBean {
                         this.consumption = consumption;
                     }
 
-                    public Object getCampaign() {
+                    public String getCampaign() {
                         return campaign;
                     }
 
-                    public void setCampaign(Object campaign) {
+                    public void setCampaign(String campaign) {
                         this.campaign = campaign;
                     }
 
-                    public Object getWaterMarks() {
+                    public String getWaterMarks() {
                         return waterMarks;
                     }
 
-                    public void setWaterMarks(Object waterMarks) {
+                    public void setWaterMarks(String waterMarks) {
                         this.waterMarks = waterMarks;
                     }
 
-                    public Object getAdTrack() {
+                    public String getAdTrack() {
                         return adTrack;
                     }
 
-                    public void setAdTrack(Object adTrack) {
+                    public void setAdTrack(String adTrack) {
                         this.adTrack = adTrack;
                     }
 
@@ -529,27 +571,27 @@ public class AuthorFragmentBean {
                         this.idx = idx;
                     }
 
-                    public Object getShareAdTrack() {
+                    public String getShareAdTrack() {
                         return shareAdTrack;
                     }
 
-                    public void setShareAdTrack(Object shareAdTrack) {
+                    public void setShareAdTrack(String shareAdTrack) {
                         this.shareAdTrack = shareAdTrack;
                     }
 
-                    public Object getFavoriteAdTrack() {
+                    public String getFavoriteAdTrack() {
                         return favoriteAdTrack;
                     }
 
-                    public void setFavoriteAdTrack(Object favoriteAdTrack) {
+                    public void setFavoriteAdTrack(String favoriteAdTrack) {
                         this.favoriteAdTrack = favoriteAdTrack;
                     }
 
-                    public Object getWebAdTrack() {
+                    public String getWebAdTrack() {
                         return webAdTrack;
                     }
 
-                    public void setWebAdTrack(Object webAdTrack) {
+                    public void setWebAdTrack(String webAdTrack) {
                         this.webAdTrack = webAdTrack;
                     }
 
@@ -561,19 +603,19 @@ public class AuthorFragmentBean {
                         this.date = date;
                     }
 
-                    public Object getPromotion() {
+                    public String getPromotion() {
                         return promotion;
                     }
 
-                    public void setPromotion(Object promotion) {
+                    public void setPromotion(String promotion) {
                         this.promotion = promotion;
                     }
 
-                    public Object getLabel() {
+                    public String getLabel() {
                         return label;
                     }
 
-                    public void setLabel(Object label) {
+                    public void setLabel(String label) {
                         this.label = label;
                     }
 
@@ -593,10 +635,66 @@ public class AuthorFragmentBean {
                         this.tags = tags;
                     }
 
-                    public static class ProviderBean {
+                    @Override
+                    public int describeContents() {
+                        return 0;
+                    }
+
+                    @Override
+                    public void writeToParcel(Parcel dest, int flags) {
+                        dest.writeString(dataType);
+                        dest.writeInt(id);
+                        dest.writeString(title);
+                        dest.writeString(description);
+                        dest.writeParcelable(provider, flags);
+                        dest.writeString(category);
+                        dest.writeParcelable(author, flags);
+                        dest.writeParcelable(cover, flags);
+                        dest.writeString(playUrl);
+                        dest.writeInt(duration);
+                        dest.writeParcelable(webUrl, flags);
+                        dest.writeLong(releaseTime);
+                        dest.writeParcelable(consumption, flags);
+                        dest.writeString(campaign);
+                        dest.writeString(waterMarks);
+                        dest.writeString(adTrack);
+                        dest.writeString(type);
+                        dest.writeInt(idx);
+                        dest.writeString(shareAdTrack);
+                        dest.writeString(favoriteAdTrack);
+                        dest.writeString(webAdTrack);
+                        dest.writeLong(date);
+                        dest.writeString(promotion);
+                        dest.writeString(label);
+                        dest.writeTypedList(playInfo);
+                        dest.writeTypedList(tags);
+                    }
+
+                    public static class ProviderBean implements Parcelable{
                         private String name;
                         private String alias;
                         private String icon;
+
+                        protected ProviderBean(Parcel in) {
+                            name = in.readString();
+                            alias = in.readString();
+                            icon = in.readString();
+                        }
+
+                        public static final Creator<ProviderBean> CREATOR = new Creator<ProviderBean>() {
+                            @Override
+                            public ProviderBean createFromParcel(Parcel in) {
+                                return new ProviderBean(in);
+                            }
+
+                            @Override
+                            public ProviderBean[] newArray(int size) {
+                                return new ProviderBean[size];
+                            }
+                        };
+
+                        public ProviderBean() {
+                        }
 
                         public String getName() {
                             return name;
@@ -621,9 +719,21 @@ public class AuthorFragmentBean {
                         public void setIcon(String icon) {
                             this.icon = icon;
                         }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeString(name);
+                            dest.writeString(alias);
+                            dest.writeString(icon);
+                        }
                     }
 
-                    public static class AuthorBean {
+                    public static class AuthorBean implements Parcelable{
                         private int id;
                         private String icon;
                         private String name;
@@ -631,7 +741,33 @@ public class AuthorFragmentBean {
                         private String link;
                         private long latestReleaseTime;
                         private int videoNum;
-                        private Object adTrack;
+                        private String adTrack;
+
+                        protected AuthorBean(Parcel in) {
+                            id = in.readInt();
+                            icon = in.readString();
+                            name = in.readString();
+                            description = in.readString();
+                            link = in.readString();
+                            latestReleaseTime = in.readLong();
+                            videoNum = in.readInt();
+                            adTrack = in.readString();
+                        }
+
+                        public static final Creator<AuthorBean> CREATOR = new Creator<AuthorBean>() {
+                            @Override
+                            public AuthorBean createFromParcel(Parcel in) {
+                                return new AuthorBean(in);
+                            }
+
+                            @Override
+                            public AuthorBean[] newArray(int size) {
+                                return new AuthorBean[size];
+                            }
+                        };
+
+                        public AuthorBean() {
+                        }
 
                         public int getId() {
                             return id;
@@ -689,20 +825,58 @@ public class AuthorFragmentBean {
                             this.videoNum = videoNum;
                         }
 
-                        public Object getAdTrack() {
+                        public String getAdTrack() {
                             return adTrack;
                         }
 
-                        public void setAdTrack(Object adTrack) {
+                        public void setAdTrack(String adTrack) {
                             this.adTrack = adTrack;
+                        }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeInt(id);
+                            dest.writeString(icon);
+                            dest.writeString(name);
+                            dest.writeString(description);
+                            dest.writeString(link);
+                            dest.writeLong(latestReleaseTime);
+                            dest.writeInt(videoNum);
+                            dest.writeString(adTrack);
                         }
                     }
 
-                    public static class CoverBean {
+                    public static class CoverBean implements Parcelable {
                         private String feed;
                         private String detail;
                         private String blurred;
-                        private Object sharing;
+                        private String sharing;
+
+                        protected CoverBean(Parcel in) {
+                            feed = in.readString();
+                            detail = in.readString();
+                            blurred = in.readString();
+                        }
+
+                        public static final Creator<CoverBean> CREATOR = new Creator<CoverBean>() {
+                            @Override
+                            public CoverBean createFromParcel(Parcel in) {
+                                return new CoverBean(in);
+                            }
+
+                            @Override
+                            public CoverBean[] newArray(int size) {
+                                return new CoverBean[size];
+                            }
+                        };
+
+                        public CoverBean() {
+                        }
 
                         public String getFeed() {
                             return feed;
@@ -728,18 +902,50 @@ public class AuthorFragmentBean {
                             this.blurred = blurred;
                         }
 
-                        public Object getSharing() {
+                        public String getSharing() {
                             return sharing;
                         }
 
-                        public void setSharing(Object sharing) {
+                        public void setSharing(String sharing) {
                             this.sharing = sharing;
+                        }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeString(feed);
+                            dest.writeString(detail);
+                            dest.writeString(blurred);
                         }
                     }
 
-                    public static class WebUrlBean {
+                    public static class WebUrlBean implements Parcelable{
                         private String raw;
                         private String forWeibo;
+
+                        protected WebUrlBean(Parcel in) {
+                            raw = in.readString();
+                            forWeibo = in.readString();
+                        }
+
+                        public static final Creator<WebUrlBean> CREATOR = new Creator<WebUrlBean>() {
+                            @Override
+                            public WebUrlBean createFromParcel(Parcel in) {
+                                return new WebUrlBean(in);
+                            }
+
+                            @Override
+                            public WebUrlBean[] newArray(int size) {
+                                return new WebUrlBean[size];
+                            }
+                        };
+
+                        public WebUrlBean() {
+                        }
 
                         public String getRaw() {
                             return raw;
@@ -756,12 +962,44 @@ public class AuthorFragmentBean {
                         public void setForWeibo(String forWeibo) {
                             this.forWeibo = forWeibo;
                         }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeString(raw);
+                            dest.writeString(forWeibo);
+                        }
                     }
 
-                    public static class ConsumptionBean {
+                    public static class ConsumptionBean implements Parcelable{
                         private int collectionCount;
                         private int shareCount;
                         private int replyCount;
+
+                        protected ConsumptionBean(Parcel in) {
+                            collectionCount = in.readInt();
+                            shareCount = in.readInt();
+                            replyCount = in.readInt();
+                        }
+
+                        public static final Creator<ConsumptionBean> CREATOR = new Creator<ConsumptionBean>() {
+                            @Override
+                            public ConsumptionBean createFromParcel(Parcel in) {
+                                return new ConsumptionBean(in);
+                            }
+
+                            @Override
+                            public ConsumptionBean[] newArray(int size) {
+                                return new ConsumptionBean[size];
+                            }
+                        };
+
+                        public ConsumptionBean() {
+                        }
 
                         public int getCollectionCount() {
                             return collectionCount;
@@ -786,14 +1024,49 @@ public class AuthorFragmentBean {
                         public void setReplyCount(int replyCount) {
                             this.replyCount = replyCount;
                         }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeInt(collectionCount);
+                            dest.writeInt(shareCount);
+                            dest.writeInt(replyCount);
+                        }
                     }
 
-                    public static class PlayInfoBean {
+                    public static class PlayInfoBean implements Parcelable{
                         private int height;
                         private int width;
                         private String name;
                         private String type;
                         private String url;
+
+                        protected PlayInfoBean(Parcel in) {
+                            height = in.readInt();
+                            width = in.readInt();
+                            name = in.readString();
+                            type = in.readString();
+                            url = in.readString();
+                        }
+
+                        public static final Creator<PlayInfoBean> CREATOR = new Creator<PlayInfoBean>() {
+                            @Override
+                            public PlayInfoBean createFromParcel(Parcel in) {
+                                return new PlayInfoBean(in);
+                            }
+
+                            @Override
+                            public PlayInfoBean[] newArray(int size) {
+                                return new PlayInfoBean[size];
+                            }
+                        };
+
+                        public PlayInfoBean() {
+                        }
 
                         public int getHeight() {
                             return height;
@@ -834,13 +1107,49 @@ public class AuthorFragmentBean {
                         public void setUrl(String url) {
                             this.url = url;
                         }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeInt(height);
+                            dest.writeInt(width);
+                            dest.writeString(name);
+                            dest.writeString(type);
+                            dest.writeString(url);
+                        }
                     }
 
-                    public static class TagsBean {
+                    public static class TagsBean implements Parcelable{
                         private int id;
                         private String name;
                         private String actionUrl;
-                        private Object adTrack;
+                        private String adTrack;
+
+                        protected TagsBean(Parcel in) {
+                            id = in.readInt();
+                            name = in.readString();
+                            actionUrl = in.readString();
+                            adTrack = in.readString();
+                        }
+
+                        public static final Creator<TagsBean> CREATOR = new Creator<TagsBean>() {
+                            @Override
+                            public TagsBean createFromParcel(Parcel in) {
+                                return new TagsBean(in);
+                            }
+
+                            @Override
+                            public TagsBean[] newArray(int size) {
+                                return new TagsBean[size];
+                            }
+                        };
+
+                        public TagsBean() {
+                        }
 
                         public int getId() {
                             return id;
@@ -866,12 +1175,25 @@ public class AuthorFragmentBean {
                             this.actionUrl = actionUrl;
                         }
 
-                        public Object getAdTrack() {
+                        public String getAdTrack() {
                             return adTrack;
                         }
 
-                        public void setAdTrack(Object adTrack) {
+                        public void setAdTrack(String adTrack) {
                             this.adTrack = adTrack;
+                        }
+
+                        @Override
+                        public int describeContents() {
+                            return 0;
+                        }
+
+                        @Override
+                        public void writeToParcel(Parcel dest, int flags) {
+                            dest.writeInt(id);
+                            dest.writeString(name);
+                            dest.writeString(actionUrl);
+                            dest.writeString(adTrack);
                         }
                     }
                 }

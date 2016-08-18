@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/author_video_bean_for_client_title"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <TextView
@@ -48,7 +48,7 @@
                 android:id="@+id/author_line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="14dp"
                 android:text="/"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
@@ -57,7 +57,7 @@
                 android:id="@+id/author_video_bean_for_client_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="14dp"
                 android:text="1.58"
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />

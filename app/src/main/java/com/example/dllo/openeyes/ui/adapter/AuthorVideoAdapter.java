@@ -2,6 +2,7 @@ package com.example.dllo.openeyes.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 public class AuthorVideoAdapter extends RecyclerView.Adapter<AuthorVideoAdapter.VideoHolder> {
     private Context context;
     private ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean> datas;
+    private OnRecyclerViewClickListener onRecyclerViewClickListener;
 
     public AuthorVideoAdapter(Context context) {
         this.context = context;
@@ -29,7 +31,10 @@ public class AuthorVideoAdapter extends RecyclerView.Adapter<AuthorVideoAdapter.
     public void setDatas(ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
-//        Log.d("AuthorVideoAdapter", "datas.size():" + datas.size());
+    }
+
+    public void setOnRecyclerViewClickListener(OnRecyclerViewClickListener onRecyclerViewClickListener) {
+        this.onRecyclerViewClickListener = onRecyclerViewClickListener;
     }
 
     @Override
@@ -40,13 +45,22 @@ public class AuthorVideoAdapter extends RecyclerView.Adapter<AuthorVideoAdapter.
     }
 
     @Override
-    public void onBindViewHolder(VideoHolder holder, int position) {
+    public void onBindViewHolder(final VideoHolder holder, int position) {
         holder.titleTv.setText(datas.get(position).getData().getTitle());
         holder.categoryTv.setText("#"+datas.get(position).getData().getCategory());
         int m=datas.get(position).getData().getDuration()/60;
         int s=datas.get(position).getData().getDuration()%60;
         holder.durationTv.setText(m+"′"+s+"″");
         PicassoInstance.getsInstance().setImage(datas.get(position).getData().getCover().getFeed(),holder.coverImg);
+
+        //横划图片的点击事件
+        holder.coverImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos=holder.getAdapterPosition();
+                onRecyclerViewClickListener.OnRecyclerViewClick(pos);
+            }
+        });
     }
 
     @Override

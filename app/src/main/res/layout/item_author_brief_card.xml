@@ -8,6 +8,7 @@
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_margin="17dp"
+        android:background="@mipmap/landing_countdown_background"
         android:src="@mipmap/three_mins" />
     <TextView
         android:id="@+id/author_brief_card_title"

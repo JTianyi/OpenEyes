@@ -1,8 +1,11 @@
 package com.example.dllo.openeyes.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +14,14 @@ import android.widget.TextView;
 
 import com.example.dllo.openeyes.model.bean.AuthorFragmentBean;
 import com.example.dllo.openeyes.R;
+import com.example.dllo.openeyes.tools.DensityUtils;
 import com.example.dllo.openeyes.tools.PicassoInstance;
+import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+import com.example.dllo.openeyes.ui.activity.AuthorVideoActivity;
+
 import java.util.ArrayList;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -25,8 +34,6 @@ public class AuthorAdapter extends BaseAdapter {
     private AuthorFragmentBean bean;
     private final int TYPE_LEFT_ALIGN_TEXT_HEADER = 0, TYPE_BRIEF_CARD = 1, TYPE_BLANK_CARD = 2,
             TYPE_VIDEO_COLLECTION_WITH_BRIEF = 3, TYPE_COUNT = 4;
-    private AuthorVideoAdapter videoAdapter;
-
 
     public AuthorAdapter(Context context) {
         this.context = context;
@@ -137,22 +144,37 @@ public class AuthorAdapter extends BaseAdapter {
                 PicassoInstance.getsInstance().setImage(bean.getItemList().get(position).getData().getIcon(), briefCardHolder.iconImg);
                 break;
             case TYPE_BLANK_CARD:
-
-
+                int px = DensityUtils.dp2px(context,bean.getItemList().get(position).getData().getHeight());
+                //获取控件的布局
+                ViewGroup.LayoutParams layoutParams = convertView.getLayoutParams();
+                //修改布局中的属性
+                layoutParams.height = px;
+                //重新设置修改后的布局给控件
+                convertView.setLayoutParams(layoutParams);
                 break;
             case TYPE_VIDEO_COLLECTION_WITH_BRIEF:
+                Log.d("wwj--->1", "position:" + position);
                 videoHolder.descriptionTv.setText(bean.getItemList().get(position).getData().getHeader().getDescription());
                 videoHolder.titleTv.setText(bean.getItemList().get(position).getData().getHeader().getTitle());
                 videoHolder.subTitleTv.setText(bean.getItemList().get(position).getData().getHeader().getSubTitle());
                 PicassoInstance.getsInstance().setImage(bean.getItemList().get(position).getData().getHeader().getIcon(), videoHolder.iconImg);
-                videoAdapter = new AuthorVideoAdapter(context);
-                videoAdapter.setDatas((ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean>) bean.getItemList().get(position).getData().getItemList());
-                videoHolder.recyclerView.setAdapter(videoAdapter);
+                AuthorVideoAdapter videoAdapter = new AuthorVideoAdapter(context);
+                final ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean>datas;
+                datas=bean.getItemList().get(position).getData().getItemList();
+                videoAdapter.setDatas(datas);
                 videoHolder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+                videoHolder.recyclerView.setAdapter(videoAdapter);
+                videoAdapter.setOnRecyclerViewClickListener(new OnRecyclerViewClickListener() {
+                    @Override
+                    public void OnRecyclerViewClick(int position) {
+                        Intent intent=new Intent(context, AuthorVideoActivity.class);
+                        intent.putExtra("videos",datas);
+                        intent.putExtra("pos", position);
+                        context.startActivity(intent);
+                    }
+                });
                 break;
         }
-
-
         return convertView;
     }
 

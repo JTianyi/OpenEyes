@@ -3,7 +3,6 @@ package com.example.dllo.openeyes.tools;
 import android.widget.ImageView;
 
 import com.example.dllo.openeyes.app.App;
-import com.example.dllo.openeyes.tool.DensityUtils;
 import com.squareup.picasso.Picasso;
 
 /**

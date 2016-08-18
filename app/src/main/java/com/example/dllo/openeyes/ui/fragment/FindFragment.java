@@ -5,16 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+
+
 import com.example.dllo.openeyes.HeaderGridView;
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.model.net.NetUrls;
-import com.example.dllo.openeyes.tool.DensityUtils;
-import com.example.dllo.openeyes.tool.ScreenUtilsInstance;
+import com.example.dllo.openeyes.tools.DensityUtils;
+
+import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+
+import com.example.dllo.openeyes.HeaderGridView;
+import com.example.dllo.openeyes.model.bean.FindBean;
+import com.example.dllo.openeyes.model.net.NetUrls;
+
 import com.example.dllo.openeyes.tools.OkHttp;
 import com.example.dllo.openeyes.tools.OnHttpCallBack;
 import com.example.dllo.openeyes.tools.PicassoInstance;
@@ -22,7 +31,6 @@ import com.example.dllo.openeyes.ui.adapter.FindAdapter;
 import com.youth.banner.Banner;
 
 import com.example.dllo.openeyes.R;
-import com.example.dllo.openeyes.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/8/12.
