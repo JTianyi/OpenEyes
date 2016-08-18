@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
     private ArrayList<Fragment>datas;
     private ImageView searchIv,menuIv;
     private TitleTextView titleTV;
+
     @Override
     protected int setLayout() {
         return R.layout.activity_main;
@@ -55,6 +57,7 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
         setTabIcon();
         changeTitleBarIcon();
         titleTV.setOnClickListener(this);
+        searchIv.setOnClickListener(this);
 
     }
 
@@ -108,7 +111,15 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        Intent intent=new Intent("com.example.dllo.openeyes.ui.BACK_TOP");
-        sendBroadcast(intent);
+        switch (v.getId()){
+            case R.id.title_tv:
+                Intent intent=new Intent("com.example.dllo.openeyes.ui.BACK_TOP");
+                sendBroadcast(intent);
+                break;
+            case R.id.title_bar_search:
+                goTo(this,SearchActivity.class);
+                break;
+        }
+
     }
 }

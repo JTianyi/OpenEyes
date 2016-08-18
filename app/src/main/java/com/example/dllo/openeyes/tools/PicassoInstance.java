@@ -24,6 +24,9 @@ public class PicassoInstance {
     public void setImage(String url, ImageView iv){
         Picasso.with(App.getContext())
                 .load(url)
+                .skipMemoryCache()
+                .resize(DensityUtils.dp2px(App.getContext(),200),DensityUtils.dp2px(App.getContext(),150))
+                .centerCrop()
                 .into(iv);
     }
 

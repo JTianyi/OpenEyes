@@ -28,7 +28,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"
-
             android:src="@mipmap/guide_search" />
         <!--菜单-->
         <ImageView
