@@ -1,5 +1,10 @@
 package com.example.dllo.openeyes.ui.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -18,6 +23,7 @@ public class AuthorFragment extends AbsBaseFragment {
     private AuthorFragmentBean bean;
     private AuthorAdapter adapter;
     private ListView listView;
+    private BackTopBroadcast backTopBroadcast;
 
     @Override
     protected int setLayout() {
@@ -46,6 +52,22 @@ public class AuthorFragment extends AbsBaseFragment {
 
             }
         });
+        backTopBroadcast=new BackTopBroadcast();
+        IntentFilter intentFilter=new IntentFilter("com.example.dllo.openeyes.ui.BACK_TOP");
+        context.registerReceiver(backTopBroadcast,intentFilter);
 
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        context.unregisterReceiver(backTopBroadcast);
+    }
+    class BackTopBroadcast extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            listView.smoothScrollToPosition(0);
+
+        }
     }
 }

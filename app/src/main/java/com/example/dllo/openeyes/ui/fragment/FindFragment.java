@@ -1,16 +1,24 @@
 package com.example.dllo.openeyes.ui.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.dllo.openeyes.selection.PicassoInstance;
+import com.example.dllo.openeyes.HeaderGridView;
+import com.example.dllo.openeyes.model.bean.FindBean;
+import com.example.dllo.openeyes.model.net.NetUrls;
 import com.example.dllo.openeyes.tool.DensityUtils;
-import com.example.dllo.openeyes.tool.OkHttp;
-import com.example.dllo.openeyes.tool.OnHttpCallBack;
 import com.example.dllo.openeyes.tool.ScreenUtilsInstance;
+import com.example.dllo.openeyes.tools.OkHttp;
+import com.example.dllo.openeyes.tools.OnHttpCallBack;
+import com.example.dllo.openeyes.tools.PicassoInstance;
+import com.example.dllo.openeyes.ui.adapter.FindAdapter;
 import com.youth.banner.Banner;
 
 import com.example.dllo.openeyes.R;
@@ -26,8 +34,9 @@ public class FindFragment extends AbsBaseFragment {
     private HeaderGridView headerGridView;
     private FindBean findBean;
     private FindAdapter findAdapter;
-    private String[] bannerUrls = {"","",""};
+    private String[] bannerUrls = {"","","",""};
     private Banner banner;
+    private BackTopBroadcast backTopBroadcast;
 
     @Override
     protected int setLayout() {
@@ -122,6 +131,22 @@ public class FindFragment extends AbsBaseFragment {
 
             }
         });
+        backTopBroadcast=new BackTopBroadcast();
+        IntentFilter intentFilter=new IntentFilter("com.example.dllo.openeyes.ui.BACK_TOP");
+        context.registerReceiver(backTopBroadcast,intentFilter);
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        context.unregisterReceiver(backTopBroadcast);
+    }
+    class BackTopBroadcast extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            headerGridView.smoothScrollToPosition(0);
+
+        }
     }
 
 }

@@ -8,7 +8,8 @@
         android:id="@+id/selection_re_bac_iv"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/selection_re_title_tv"
         android:layout_width="wrap_content"

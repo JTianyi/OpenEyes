@@ -1,16 +1,15 @@
 package com.example.dllo.openeyes.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-<<<<<<< HEAD:app/src/main/java/com/example/dllo/openeyes/ui/activity/HomeActivity.java
-=======
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
->>>>>>> f5a16eb34cba7ecf99309ecd3dbebf13c8a99a27:app/src/main/java/com/example/dllo/openeyes/HomeActivity.java
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.dllo.openeyes.ui.adapter.HomeAdapter;
 import com.example.dllo.openeyes.ui.fragment.MineFragment;
@@ -18,18 +17,19 @@ import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.ui.fragment.SelectionFragment;
 import com.example.dllo.openeyes.ui.fragment.AuthorFragment;
 import com.example.dllo.openeyes.ui.fragment.FindFragment;
+import com.example.dllo.openeyes.view.TitleTextView;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AbsBaseActivity {
+public class HomeActivity extends AbsBaseActivity implements View.OnClickListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private HomeAdapter adapter;
     private ArrayList<Fragment>datas;
     private ImageView searchIv,menuIv;
+    private TitleTextView titleTV;
     @Override
     protected int setLayout() {
-        Log.d("aaaa", "setLayout: ");
         return R.layout.activity_main;
     }
 
@@ -39,6 +39,7 @@ public class HomeActivity extends AbsBaseActivity {
         viewPager=byView(R.id.main_viewpager);
         searchIv=byView(R.id.title_bar_search);
         menuIv=byView(R.id.title_bar_menu);
+        titleTV=byView(R.id.title_tv);
 
     }
 
@@ -53,6 +54,7 @@ public class HomeActivity extends AbsBaseActivity {
         tabLayout.setupWithViewPager(viewPager);
         setTabIcon();
         changeTitleBarIcon();
+        titleTV.setOnClickListener(this);
 
     }
 
@@ -104,4 +106,9 @@ public class HomeActivity extends AbsBaseActivity {
         datas.add(new MineFragment());
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent("com.example.dllo.openeyes.ui.BACK_TOP");
+        sendBroadcast(intent);
+    }
 }

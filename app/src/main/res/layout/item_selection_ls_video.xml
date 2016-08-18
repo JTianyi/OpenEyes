@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-    <ImageView
+    <com.example.dllo.openeyes.tools.RecyclableImageView
         android:id="@+id/selection_ls_bac_iv"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/selection_ls_title_tv"
         android:layout_width="wrap_content"

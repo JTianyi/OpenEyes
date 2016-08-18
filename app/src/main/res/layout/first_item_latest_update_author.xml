@@ -8,11 +8,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.example.dllo.openeyes.tools.RoundImage
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/first_latest_logo_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:is_round="true"/>
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:padding="5dp"
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/first_latest_title_tv"
             android:layout_width="wrap_content"
@@ -20,7 +21,6 @@
             android:layout_alignTop="@id/first_latest_logo_iv"
             android:layout_toRightOf="@id/first_latest_logo_iv"
             android:textSize="16sp"
-            android:layout_marginTop="5dp"
             android:textStyle="bold"
             />
         <TextView
@@ -28,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"
-            android:layout_marginTop="5dp"
             android:layout_alignBottom="@id/first_latest_title_tv"
             android:layout_toRightOf="@id/first_latest_title_tv"
             android:layout_marginLeft="15dp"/>
@@ -37,7 +36,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:layout_marginBottom="8dp"
             android:layout_alignBottom="@id/first_latest_logo_iv"
             android:layout_toRightOf="@id/first_latest_logo_iv"
             android:ellipsize="end"
