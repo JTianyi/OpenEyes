@@ -32,8 +32,12 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
 
     @Override
     protected int setLayout() {
+<<<<<<< HEAD
         return R.layout.activity_home;
 
+=======
+        return R.layout.activity_main;
+>>>>>>> feature/发现二级界面搭建中
     }
 
     @Override
