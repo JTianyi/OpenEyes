@@ -83,7 +83,7 @@ public class AuthorFragmentBean  {
         }
 
 
-        public static class DataBean {
+        public static class DataBean implements Parcelable{
             private String dataType;
             private int id;
             private String icon;
@@ -104,6 +104,40 @@ public class AuthorFragmentBean  {
 
             private HeaderBean header;
             private ArrayList<NItemListBean> itemList;
+
+            protected DataBean(Parcel in) {
+                dataType = in.readString();
+                id = in.readInt();
+                icon = in.readString();
+                title = in.readString();
+                subTitle = in.readString();
+                description = in.readString();
+                actionUrl = in.readString();
+                adTrack = in.readString();
+                text = in.readString();
+                font = in.readString();
+                height = in.readInt();
+                count = in.readInt();
+                total = in.readInt();
+                nextPageUrl = in.readString();
+                header = in.readParcelable(HeaderBean.class.getClassLoader());
+                itemList = in.createTypedArrayList(NItemListBean.CREATOR);
+            }
+
+            public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+                @Override
+                public DataBean createFromParcel(Parcel in) {
+                    return new DataBean(in);
+                }
+
+                @Override
+                public DataBean[] newArray(int size) {
+                    return new DataBean[size];
+                }
+            };
+
+            public DataBean() {
+            }
 
             public HeaderBean getHeader() {
                 return header;
@@ -234,7 +268,32 @@ public class AuthorFragmentBean  {
                 return itemList;
             }
 
-            public static class HeaderBean {
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(dataType);
+                dest.writeInt(id);
+                dest.writeString(icon);
+                dest.writeString(title);
+                dest.writeString(subTitle);
+                dest.writeString(description);
+                dest.writeString(actionUrl);
+                dest.writeString(adTrack);
+                dest.writeString(text);
+                dest.writeString(font);
+                dest.writeInt(height);
+                dest.writeInt(count);
+                dest.writeInt(total);
+                dest.writeString(nextPageUrl);
+                dest.writeParcelable(header, flags);
+                dest.writeTypedList(itemList);
+            }
+
+            public static class HeaderBean implements Parcelable{
                 private int id;
                 private String icon;
                 private String title;
@@ -242,6 +301,31 @@ public class AuthorFragmentBean  {
                 private String description;
                 private String actionUrl;
                 private String adTrack;
+
+                protected HeaderBean(Parcel in) {
+                    id = in.readInt();
+                    icon = in.readString();
+                    title = in.readString();
+                    subTitle = in.readString();
+                    description = in.readString();
+                    actionUrl = in.readString();
+                    adTrack = in.readString();
+                }
+
+                public static final Creator<HeaderBean> CREATOR = new Creator<HeaderBean>() {
+                    @Override
+                    public HeaderBean createFromParcel(Parcel in) {
+                        return new HeaderBean(in);
+                    }
+
+                    @Override
+                    public HeaderBean[] newArray(int size) {
+                        return new HeaderBean[size];
+                    }
+                };
+
+                public HeaderBean() {
+                }
 
                 public int getId() {
                     return id;
@@ -297,6 +381,22 @@ public class AuthorFragmentBean  {
 
                 public void setAdTrack(String adTrack) {
                     this.adTrack = adTrack;
+                }
+
+                @Override
+                public int describeContents() {
+                    return 0;
+                }
+
+                @Override
+                public void writeToParcel(Parcel dest, int flags) {
+                    dest.writeInt(id);
+                    dest.writeString(icon);
+                    dest.writeString(title);
+                    dest.writeString(subTitle);
+                    dest.writeString(description);
+                    dest.writeString(actionUrl);
+                    dest.writeString(adTrack);
                 }
             }
 

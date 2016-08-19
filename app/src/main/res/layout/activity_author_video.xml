@@ -19,7 +19,7 @@
         android:layout_height="280dp"
         android:layout_alignParentBottom="true"
         android:scaleType="centerCrop"
-        android:src="@mipmap/three_mins" />
+        android:src="@mipmap/recommend_bg_liked" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/author_video_tablayout"
@@ -44,14 +44,15 @@
         android:src="@mipmap/ic_action_detail_back" />
 
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/author_video_texts"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignTop="@id/author_video_blurred"
-        android:layout_marginTop="12dp"
-        android:orientation="vertical">
+        android:layout_marginTop="12dp">
 
         <RelativeLayout
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -62,7 +63,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="dajdfoinwiofhpfa,sd;m"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <com.example.dllo.openeyes.view.TypeTextView
@@ -78,6 +79,7 @@
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/author_video_open_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -88,11 +90,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/author_brief_card_icon"
+                android:id="@+id/author_video_header_icon"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_marginBottom="15dp"
@@ -103,33 +107,33 @@
                 android:src="@mipmap/three_mins" />
 
             <TextView
-                android:id="@+id/author_brief_card_title"
+                android:id="@+id/author_video_header_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/author_brief_card_icon"
-                android:layout_toRightOf="@id/author_brief_card_icon"
+                android:layout_alignTop="@id/author_video_header_icon"
+                android:layout_toRightOf="@id/author_video_header_icon"
                 android:text="饭盒Foodlink"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/author_brief_card_subTitle"
+                android:id="@+id/author_video_header_subTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/author_brief_card_title"
+                android:layout_alignBottom="@id/author_video_header_title"
                 android:layout_marginLeft="20sp"
-                android:layout_toRightOf="@id/author_brief_card_title"
+                android:layout_toRightOf="@id/author_video_header_title"
                 android:text="饭盒Foodlink"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/author_brief_card_description"
+                android:id="@+id/author_video_header_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/author_brief_card_icon"
-                android:layout_toRightOf="@id/author_brief_card_icon"
+                android:layout_alignBottom="@id/author_video_header_icon"
+                android:layout_toRightOf="@id/author_video_header_icon"
                 android:ellipsize="end"
                 android:maxEms="18"
                 android:singleLine="true"
@@ -142,12 +146,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
                 android:src="@mipmap/ic_action_more_arrow_dark" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_below="@id/author_brief_card_icon"
+                android:layout_below="@id/author_video_header_icon"
                 android:layout_marginLeft="17dp"
                 android:background="#d5d5d5" />
         </RelativeLayout>
@@ -160,70 +165,95 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
+            android:layout_below="@id/header"
             android:text="fvashdfoasdfasdfjsadi jipsdjfopsdjfajsdf jasdfj asipdfjiasdjfiajsdifjasd fjiasdjfipasdjf asdif hasdifh asiodhfia sddfips"
             android:textColor="@android:color/white"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp">
 
             <ImageView
+                android:id="@+id/author_video_favorites_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="17dp"
+                android:layout_centerVertical="true"
                 android:src="@mipmap/ic_action_favorites_without_padding" />
 
             <TextView
+                android:id="@+id/author_video_favorites"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="236"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_favorites_icon"
                 android:textColor="@android:color/white" />
 
             <ImageView
+                android:id="@+id/author_video_share_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
+                android:layout_marginLeft="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_favorites"
                 android:src="@mipmap/ic_action_share_without_padding" />
 
             <TextView
+                android:id="@+id/author_video_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="236"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_share_icon"
                 android:textColor="@android:color/white" />
 
             <ImageView
+                android:id="@+id/author_video_reply_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
+                android:layout_marginLeft="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_share"
                 android:src="@mipmap/ic_action_reply_nopadding" />
 
             <TextView
+                android:id="@+id/author_video_reply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="236"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_reply_icon"
                 android:textColor="@android:color/white" />
 
             <ImageView
+                android:id="@+id/author_video_download_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
+                android:layout_marginLeft="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_reply"
                 android:src="@mipmap/action_download_cut" />
 
             <TextView
+                android:id="@+id/author_video_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="缓存"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/author_video_download_icon"
                 android:textColor="@android:color/white" />
-        </LinearLayout>
+        </RelativeLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

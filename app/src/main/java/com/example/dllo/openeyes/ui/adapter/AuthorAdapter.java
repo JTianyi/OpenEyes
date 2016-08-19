@@ -160,7 +160,9 @@ public class AuthorAdapter extends BaseAdapter {
                 PicassoInstance.getsInstance().setImage(bean.getItemList().get(position).getData().getHeader().getIcon(), videoHolder.iconImg);
                 AuthorVideoAdapter videoAdapter = new AuthorVideoAdapter(context);
                 final ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean>datas;
+                final AuthorFragmentBean.ItemListBean.DataBean dataBean;
                 datas=bean.getItemList().get(position).getData().getItemList();
+                dataBean=bean.getItemList().get(position).getData();
                 videoAdapter.setDatas(datas);
                 videoHolder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                 videoHolder.recyclerView.setAdapter(videoAdapter);
@@ -168,7 +170,7 @@ public class AuthorAdapter extends BaseAdapter {
                     @Override
                     public void OnRecyclerViewClick(int position) {
                         Intent intent=new Intent(context, AuthorVideoActivity.class);
-                        intent.putExtra("videos",datas);
+                        intent.putExtra("videos",dataBean);
                         intent.putExtra("pos", position);
                         context.startActivity(intent);
                     }
