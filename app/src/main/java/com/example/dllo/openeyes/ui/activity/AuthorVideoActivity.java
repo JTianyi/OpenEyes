@@ -112,11 +112,11 @@ public class AuthorVideoActivity extends AbsBaseActivity {
                 Log.d("AuthorVideoActivity", "positionOffset - offset:" + (positionOffset - offset));
                     float ori = positionOffset - offset;
                     if (ori > 0) {
-//                        moveAnim(positionOffset);
-                        videoTexts.setAlpha(positionOffset);
+                        moveAnim(positionOffset);
+//                        videoTexts.setAlpha(positionOffset);
                     } else {
-                        videoTexts.setAlpha(1-positionOffset);
-//                        moveAnim(1 - positionOffset);
+//                        videoTexts.setAlpha(1-positionOffset);
+                        moveAnim(1 - positionOffset);
 
                     }
                     offset = positionOffset;

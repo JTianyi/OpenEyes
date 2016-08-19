@@ -1,70 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-<<<<<<< HEAD
-                android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
     <com.example.dllo.openeyes.tools.RecyclableImageView
-=======
-                android:layout_height="wrap_content"
-                >
-    <ImageView
->>>>>>> feature/发现二级界面搭建中
         android:id="@+id/selection_ls_bac_iv"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray"
+        android:scaleType="centerCrop" />
+
     <TextView
         android:id="@+id/selection_ls_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="测试文字"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:layout_centerInParent="true"/>
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/selection_ls_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="/"
-        android:textSize="13sp"
-        android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
         android:layout_alignBottom="@id/selection_ls_bac_iv"
-        android:layout_marginBottom="67dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="67dp"
+        android:text="/"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/selection_ls_duration_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="03.37"
-        android:textSize="13sp"
-        android:textColor="@android:color/white"
-        android:layout_toRightOf="@id/selection_ls_tv"
         android:layout_alignTop="@id/selection_ls_tv"
         android:layout_marginLeft="10dp"
-        />
+        android:layout_toRightOf="@id/selection_ls_tv"
+        android:text="03.37"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/selection_ls_type_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="#创意"
-        android:textSize="13sp"
-        android:textColor="@android:color/white"
-        android:layout_toLeftOf="@id/selection_ls_tv"
         android:layout_alignTop="@id/selection_ls_tv"
         android:layout_marginRight="10dp"
-        />
+        android:layout_toLeftOf="@id/selection_ls_tv"
+        android:text="#创意"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
+
     <TextView
         android:id="@+id/selection_ls_author_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="13sp"
+        android:layout_alignBottom="@id/selection_ls_bac_iv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
         android:text="adddd"
         android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@id/selection_ls_bac_iv"
-        android:layout_marginBottom="45dp"/>
+        android:textSize="13sp" />
 </RelativeLayout>
