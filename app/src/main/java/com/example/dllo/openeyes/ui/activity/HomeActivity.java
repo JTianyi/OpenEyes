@@ -33,6 +33,7 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
     @Override
     protected int setLayout() {
         return R.layout.activity_home;
+
     }
 
     @Override

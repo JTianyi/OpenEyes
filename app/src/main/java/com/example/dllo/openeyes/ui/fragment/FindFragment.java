@@ -11,12 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+
 import com.example.dllo.openeyes.model.bean.ExploreBannerBean;
+
+
+
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.model.net.NetUrls;
 import com.example.dllo.openeyes.tools.DensityUtils;
 
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+
+
+import com.example.dllo.openeyes.model.bean.FindBean;
+import com.example.dllo.openeyes.model.net.NetUrls;
 
 
 import com.example.dllo.openeyes.tools.OkHttp;
@@ -27,6 +35,7 @@ import com.example.dllo.openeyes.ui.adapter.FindAdapter;
 import com.youth.banner.Banner;
 
 import com.example.dllo.openeyes.R;
+
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.model.bean.FindNeedBean;
 import com.example.dllo.openeyes.model.net.NetUrls;
@@ -43,6 +52,7 @@ import com.youth.banner.Banner;
 import com.example.dllo.openeyes.R;
 
 import java.util.ArrayList;
+
 /**
  * Created by dllo on 16/8/12.
  * 发现界面
@@ -54,6 +64,7 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
     private FindBean findBean;
     private ArrayList<FindNeedBean> beanArrayList;
     private FindAdapter findAdapter;
+
     private Banner banner;
     private BackTopBroadcast backTopBroadcast;
     private String[] bannerUrls;
