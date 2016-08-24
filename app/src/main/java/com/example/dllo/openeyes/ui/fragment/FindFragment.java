@@ -63,7 +63,6 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
     private ArrayList<FindNeedBean> beanArrayList;
     private FindAdapter findAdapter;
 
-    private String[] bannerUrls = {"","","",""};
 
     private Banner banner;
     private BackTopBroadcast backTopBroadcast;

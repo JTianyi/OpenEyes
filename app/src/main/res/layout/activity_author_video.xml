@@ -11,7 +11,15 @@
         android:id="@+id/author_video_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white" />
+        android:background="@mipmap/recommend_bg_unlike" />
+    <com.example.dllo.openeyes.tools.RecyclableImageView
+        android:id="@+id/author_video_blurred_next"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ceshi"
+        />
 
     <com.example.dllo.openeyes.tools.RecyclableImageView
         android:id="@+id/author_video_blurred"
@@ -21,10 +29,12 @@
         android:scaleType="centerCrop"
         android:src="@mipmap/recommend_bg_liked" />
 
+
+
     <android.support.design.widget.TabLayout
         android:id="@+id/author_video_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="2dp"
         android:layout_alignParentBottom="true"
         android:background="@android:color/transparent" />
 

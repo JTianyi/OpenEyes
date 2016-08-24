@@ -53,7 +53,7 @@ public class AuthorVideoAdapter extends RecyclerView.Adapter<AuthorVideoAdapter.
         DecimalFormat df = new DecimalFormat("00");
         String m=df.format(datas.get(position).getData().getDuration()/60);
         String s=df.format(datas.get(position).getData().getDuration()%60);
-        holder.durationTv.setText(m+"′"+s+"″");
+        holder.durationTv.setText(m+"′ "+s+"″");
         PicassoInstance.getsInstance().setImage(datas.get(position).getData().getCover().getFeed(),holder.coverImg);
 
         //横划图片的点击事件

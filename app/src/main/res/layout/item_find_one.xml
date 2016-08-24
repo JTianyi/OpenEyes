@@ -13,18 +13,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             android:layout_margin="1.5dp"/>
         <ImageView
             android:id="@+id/find_topic_iv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             android:layout_margin="1.5dp"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/find_rectangle_iv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"/>
 
 
 </LinearLayout>

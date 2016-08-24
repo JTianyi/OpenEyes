@@ -17,6 +17,22 @@ public final class NetUrls {
      */
     public final static String AUTHOR_URL = "http://baobab.wandoujia.com/api/v3/tabs/pgcs?udid=fc33d7ade6d5482bba5eeae629440fe0c6ac1a9e&vc=126&vn=2.4.1&deviceModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=22";
     /**
+     * 作者详情界面的Url前缀
+     */
+    public final static String AUTHOR_DETAIL_HEAD_URL ="http://baobab.wandoujia.com/api/v3/pgc/videos?pgcId=";
+    /**
+     * 作者详情界面的Url尾缀
+     */
+    public final static String AUTHOR_DETAIL_FOOT_URL ="&udid=fc33d7ade6d5482bba5eeae629440fe0c6ac1a9e&vc=126&vn=2.4.1&deviceModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=22";
+    /**
+     * 作者详情界面按<时间>排序的拼接Url
+     */
+    public final static String AUTHOR_DETAIL_DATE_URL ="&strategy=date";
+    /**
+     * 作者详情界面按<分享数量>排序的拼接Url
+     */
+    public final static String AUTHOR_DETAIL_SHARE_URL ="&strategy=shareCount";
+    /**
      * 查看往期编辑精选界面的Url
      */
     public final static String LOOK_BEFORE_SELECTON_URL = "http://baobab.wandoujia.com/api/v2/feed?num=2&udid=86f35dc937824e09bf8d0c7dc0cfea543ed2a2a3&vc=126&vn=2.4.1&deviceModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market&system_version_code=22";

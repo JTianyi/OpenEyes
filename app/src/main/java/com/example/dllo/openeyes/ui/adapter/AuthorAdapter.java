@@ -10,14 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dllo.openeyes.model.bean.AuthorFragmentBean;
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.tools.DensityUtils;
 import com.example.dllo.openeyes.tools.PicassoInstance;
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+import com.example.dllo.openeyes.ui.activity.AuthorDetailActivity;
 import com.example.dllo.openeyes.ui.activity.AuthorVideoActivity;
+import com.example.dllo.openeyes.ui.activity.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +85,7 @@ public class AuthorAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LeftAlignTextHeaderHolder headerHolder = null;
         BriefCardHolder briefCardHolder = null;
         VideoCollectionWithBriefHolder videoHolder = null;
@@ -142,7 +146,17 @@ public class AuthorAdapter extends BaseAdapter {
                 briefCardHolder.titleTv.setText(bean.getItemList().get(position).getData().getTitle());
                 briefCardHolder.subTitleTv.setText(bean.getItemList().get(position).getData().getSubTitle());
                 PicassoInstance.getsInstance().setImage(bean.getItemList().get(position).getData().getIcon(), briefCardHolder.iconImg);
+                briefCardHolder.briefRel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(context,AuthorDetailActivity.class);
+                        intent.putExtra("id",bean.getItemList().get(position).getData().getId());
+                        context.startActivity(intent);
+                    }
+                });
                 break;
+
+
             case TYPE_BLANK_CARD:
                 int px = DensityUtils.dp2px(context,bean.getItemList().get(position).getData().getHeight());
                 //获取控件的布局
@@ -153,12 +167,12 @@ public class AuthorAdapter extends BaseAdapter {
                 convertView.setLayoutParams(layoutParams);
                 break;
             case TYPE_VIDEO_COLLECTION_WITH_BRIEF:
-                Log.d("wwj--->1", "position:" + position);
+
                 videoHolder.descriptionTv.setText(bean.getItemList().get(position).getData().getHeader().getDescription());
                 videoHolder.titleTv.setText(bean.getItemList().get(position).getData().getHeader().getTitle());
                 videoHolder.subTitleTv.setText(bean.getItemList().get(position).getData().getHeader().getSubTitle());
                 PicassoInstance.getsInstance().setImage(bean.getItemList().get(position).getData().getHeader().getIcon(), videoHolder.iconImg);
-                AuthorVideoAdapter videoAdapter = new AuthorVideoAdapter(context);
+                final AuthorVideoAdapter videoAdapter = new AuthorVideoAdapter(context);
                 final ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean>datas;
                 final AuthorFragmentBean.ItemListBean.DataBean dataBean;
                 datas=bean.getItemList().get(position).getData().getItemList();
@@ -166,6 +180,14 @@ public class AuthorAdapter extends BaseAdapter {
                 videoAdapter.setDatas(datas);
                 videoHolder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                 videoHolder.recyclerView.setAdapter(videoAdapter);
+                videoHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(context,AuthorDetailActivity.class);
+                        intent.putExtra("id",bean.getItemList().get(position).getData().getHeader().getId());
+                        context.startActivity(intent);
+                    }
+                });
                 videoAdapter.setOnRecyclerViewClickListener(new OnRecyclerViewClickListener() {
                     @Override
                     public void OnRecyclerViewClick(int position) {
@@ -191,12 +213,14 @@ public class AuthorAdapter extends BaseAdapter {
     class BriefCardHolder {
         private CircleImageView iconImg;
         private TextView titleTv, subTitleTv, descriptionTv;
+        private RelativeLayout briefRel;
 
         public BriefCardHolder(View view) {
             iconImg = (CircleImageView) view.findViewById(R.id.author_brief_card_icon);
             titleTv = (TextView) view.findViewById(R.id.author_brief_card_title);
             subTitleTv = (TextView) view.findViewById(R.id.author_brief_card_subTitle);
             descriptionTv = (TextView) view.findViewById(R.id.author_brief_card_description);
+            briefRel = (RelativeLayout) view.findViewById(R.id.item_author_brief_rel);
         }
     }
 
@@ -204,6 +228,7 @@ public class AuthorAdapter extends BaseAdapter {
         private CircleImageView iconImg;
         private TextView titleTv, subTitleTv, descriptionTv;
         private RecyclerView recyclerView;
+        private RelativeLayout relativeLayout;
 
         public VideoCollectionWithBriefHolder(View view) {
             iconImg = (CircleImageView) view.findViewById(R.id.author_video_collection_with_brief_icon);
@@ -211,6 +236,7 @@ public class AuthorAdapter extends BaseAdapter {
             subTitleTv = (TextView) view.findViewById(R.id.author_video_collection_with_brief_subTitle);
             descriptionTv = (TextView) view.findViewById(R.id.author_video_collection_with_brief_description);
             recyclerView = (RecyclerView) view.findViewById(R.id.author_video_collection_with_brief_recyclerview);
+            relativeLayout= (RelativeLayout) view.findViewById(R.id.author_video_brief_layout);
         }
     }
 
