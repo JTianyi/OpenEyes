@@ -5,7 +5,7 @@ import android.view.ViewTreeObserver;
 
 /**
  * Created by mac on 16/8/15.
- * 获取空间高度工具类
+ * 获取控件高度工具类
  * @author wangweijian
  */
 public class ModuleUtilsInstance {
@@ -15,7 +15,7 @@ public class ModuleUtilsInstance {
 
     public static ModuleUtilsInstance getsInstance(){
         if (sModuleUtilsInstance == null){
-            synchronized (ScreenUtilsInstance.class){
+            synchronized (ModuleUtilsInstance.class){
                 if (sModuleUtilsInstance == null){
                     sModuleUtilsInstance =new ModuleUtilsInstance();
                 }

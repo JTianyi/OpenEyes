@@ -7,10 +7,23 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+<<<<<<< HEAD
     <style name="pop">
         <item name="android:windowEnterAnimation">@anim/form_top_to_bottom_translate</item>
         <item name="android:windowExitAnimation">@anim/form_bottom_to_top_translate</item>
     </style>
+=======
+    <style name="transparentText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor" >#00000000</item>
+>>>>>>> cb3ef979415e5ea70a23e97b4ae3ff39ef5409c0
 
+    </style>
+
+    <style name="ToolBarTitleText" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">#444444</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
 
 </resources>

@@ -9,39 +9,50 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.R;
+import com.example.dllo.openeyes.tools.ModuleUtilsInstance;
+import com.example.dllo.openeyes.tools.PicassoInstance;
+import com.example.dllo.openeyes.tools.DensityUtils;
+import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+import com.example.dllo.openeyes.model.bean.FindNeedBean;
+import com.squareup.picasso.Picasso;
+
+
+import com.example.dllo.openeyes.R;
+import com.example.dllo.openeyes.model.bean.FindNeedBean;
 import com.example.dllo.openeyes.tools.PicassoInstance;
 
 import com.example.dllo.openeyes.tools.DensityUtils;
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
-import com.squareup.picasso.Picasso;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 
 /**
  * Created by mac on 16/8/12.
  * 发现界面适配器
+ *
+ * @author wangweijian
  */
 public class FindAdapter extends BaseAdapter {
-    private FindBean findBean;
+    private ArrayList<FindNeedBean> beanArrayList;
     private Context context;
 
     public FindAdapter(Context context) {
         this.context = context;
     }
 
-    public void setFindBean(FindBean findBean) {
-        this.findBean = findBean;
+    public void setBeanArrayList(ArrayList<FindNeedBean> beanArrayList) {
+        this.beanArrayList = beanArrayList;
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return findBean.getItemList().size();
+        return beanArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return findBean.getItemList().get(position);
+        return beanArrayList.get(position);
     }
 
     @Override
@@ -60,32 +71,19 @@ public class FindAdapter extends BaseAdapter {
         } else {
             holder = (FindSquareHolder) convertView.getTag();
         }
-
-        //如果位置大于3  则显示
-//        if (position <4) {
-//            //否则使其Gone
-//            holder.findSquareIv.setVisibility(View.GONE);
-//            holder.findSquareTv.setVisibility(View.GONE);
-
-//        } else {
-            holder.findSquareTv.setText(findBean.getItemList().get(position).getData().getTitle());
-            PicassoInstance.getsInstance().setImage(findBean.getItemList().get(position).getData().getImage(), holder.findSquareIv);
-            //获取屏幕宽度
-            int width = ScreenUtilsInstance.getsInstance().getScreenWidth(context);
-            //将dp转换成px
-            int px = DensityUtils.dp2px(context,1.5f);
-            //获取控件的布局
-            ViewGroup.LayoutParams layoutParams = holder.findSquareIv.getLayoutParams();
-            //修改布局中的属性
-            layoutParams.height = (width - px) / 2;
-            layoutParams.width = (width-px)/2;
-            //重新设置修改后的布局给控件
-            holder.findSquareIv.setLayoutParams(layoutParams);
-//        if (position<4){
-//            holder.findSquareIv.setVisibility(View.GONE);
-//            holder.findSquareTv.setVisibility(View.GONE);
-//        }
-//        }
+        holder.findSquareTv.setText(beanArrayList.get(position).getNeedTitle());
+        PicassoInstance.getsInstance().setImage(beanArrayList.get(position).getNeedImage(), holder.findSquareIv);
+        //获取屏幕宽度
+        int width = ScreenUtilsInstance.getsInstance().getScreenWidth(context);
+        //将dp转换成px
+        int px = DensityUtils.dp2px(context, 1.5f);
+        //获取控件的布局
+        ViewGroup.LayoutParams layoutParams = holder.findSquareIv.getLayoutParams();
+        //修改布局中的属性
+        layoutParams.height = (width - px) / 2;
+        layoutParams.width = (width - px) / 2;
+        //重新设置修改后的布局给控件
+        holder.findSquareIv.setLayoutParams(layoutParams);
         return convertView;
     }
 

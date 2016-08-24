@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.dllo.openeyes.HeaderGridView
+    <com.example.dllo.openeyes.view.HeaderGridView
         android:id="@+id/find_grid_view"
         android:numColumns="2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.example.dllo.openeyes.HeaderGridView>
+        android:layout_height="match_parent"></com.example.dllo.openeyes.view.HeaderGridView>
 
 </LinearLayout>

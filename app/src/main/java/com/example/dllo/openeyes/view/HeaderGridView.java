@@ -1,4 +1,4 @@
-package com.example.dllo.openeyes;
+package com.example.dllo.openeyes.view;
 
 import android.content.Context;
 import android.database.DataSetObservable;

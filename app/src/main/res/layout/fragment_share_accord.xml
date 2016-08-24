@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <com.youth.banner.Banner
-        android:id="@+id/find_banner"
+    <ListView
+        android:id="@+id/accord_share_list_view"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>
