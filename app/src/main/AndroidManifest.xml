@@ -17,16 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
         <activity android:name=".ui.activity.AuthorVideoActivity"/>
         <activity android:name=".ui.activity.BeforeSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
-=======
->>>>>>> feature/发现详情二级界面
+
 
         <activity android:name=".ui.activity.AuthorVideoActivity" />
 
@@ -37,18 +33,15 @@
         <activity
             android:name=".ui.activity.SearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
->>>>>>> cb3ef979415e5ea70a23e97b4ae3ff39ef5409c0
 
-
-<<<<<<< HEAD
         <activity android:name=".ui.activity.FullShotActivity" />
         <activity android:name=".ui.activity.ExploreBannerActivity"/>
-=======
+
 
         <activity android:name=".ui.activity.FullShotActivity"/>
         <activity android:name=".ui.activity.AuthorDetailActivity"/>
 
->>>>>>> feature/发现详情二级界面
+
     </application>
 
 </manifest>
