@@ -11,28 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-<<<<<<< HEAD
-
-
-import com.example.dllo.openeyes.HeaderGridView;
+import com.example.dllo.openeyes.model.bean.ExploreBannerBean;
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.model.net.NetUrls;
 import com.example.dllo.openeyes.tools.DensityUtils;
 
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
 
-import com.example.dllo.openeyes.HeaderGridView;
-import com.example.dllo.openeyes.model.bean.FindBean;
-import com.example.dllo.openeyes.model.net.NetUrls;
 
 import com.example.dllo.openeyes.tools.OkHttp;
 import com.example.dllo.openeyes.tools.OnHttpCallBack;
 import com.example.dllo.openeyes.tools.PicassoInstance;
+import com.example.dllo.openeyes.ui.activity.ExploreBannerActivity;
 import com.example.dllo.openeyes.ui.adapter.FindAdapter;
 import com.youth.banner.Banner;
 
 import com.example.dllo.openeyes.R;
-=======
 import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.model.bean.FindNeedBean;
 import com.example.dllo.openeyes.model.net.NetUrls;
@@ -49,8 +43,6 @@ import com.youth.banner.Banner;
 import com.example.dllo.openeyes.R;
 
 import java.util.ArrayList;
->>>>>>> feature/发现二级界面搭建中
-
 /**
  * Created by dllo on 16/8/12.
  * 发现界面
@@ -62,12 +54,9 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
     private FindBean findBean;
     private ArrayList<FindNeedBean> beanArrayList;
     private FindAdapter findAdapter;
-<<<<<<< HEAD
-    private String[] bannerUrls = {"","","",""};
-=======
->>>>>>> feature/发现二级界面搭建中
     private Banner banner;
     private BackTopBroadcast backTopBroadcast;
+    private String[] bannerUrls;
 
     @Override
     protected int setLayout() {
@@ -138,8 +127,17 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
         layoutParams.height = screenHeight * 2 / 5;
         //重新设置给控件
         banner.setLayoutParams(layoutParams);
-
+        //给banner设置点击事件
+        banner.setOnBannerClickListener(new Banner.OnBannerClickListener() {
+            @Override
+            public void OnBannerClick(View view, int position) {
+                if (position==bannerUrls.length){
+                goTo(context, ExploreBannerActivity.class);
+                }
+            }
+        });
     }
+
 
     private void addFindData() {
         OkHttp.getInstance().startRequest(NetUrls.FIND_URL, FindBean.class, new OnHttpCallBack<FindBean>() {
@@ -162,7 +160,7 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
                 }
                 findAdapter.setBeanArrayList(beanArrayList);
                 headerGridView.setAdapter(findAdapter);
-                String[] bannerUrls = new String[findBean.getItemList().get(0).getData().getItemList().size()];
+                bannerUrls = new String[findBean.getItemList().get(0).getData().getItemList().size()];
                 for (int i = 0; i < findBean.getItemList().get(0).getData().getItemList().size(); i++) {
                     bannerUrls[i] = findBean.getItemList().get(0).getData().getItemList().get(i).getData().getImage();
                     banner.setImages(bannerUrls);

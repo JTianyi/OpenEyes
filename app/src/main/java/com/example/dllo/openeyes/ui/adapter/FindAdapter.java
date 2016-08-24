@@ -7,26 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-<<<<<<< HEAD
-import com.example.dllo.openeyes.model.bean.FindBean;
 import com.example.dllo.openeyes.R;
+import com.example.dllo.openeyes.tools.ModuleUtilsInstance;
 import com.example.dllo.openeyes.tools.PicassoInstance;
-
 import com.example.dllo.openeyes.tools.DensityUtils;
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
-import com.squareup.picasso.Picasso;
-=======
-
-import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.model.bean.FindNeedBean;
-import com.example.dllo.openeyes.tools.PicassoInstance;
-
-import com.example.dllo.openeyes.tools.DensityUtils;
-import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
-
->>>>>>> feature/发现二级界面搭建中
 import java.util.ArrayList;
-
 
 /**
  * Created by mac on 16/8/12.

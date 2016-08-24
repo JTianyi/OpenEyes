@@ -2,10 +2,8 @@ package com.example.dllo.openeyes.ui.fragment;
 
 import android.view.View;
 import android.widget.ListView;
-
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.model.bean.AccordBean;
-import com.example.dllo.openeyes.model.bean.AccordShareBean;
 import com.example.dllo.openeyes.model.net.NetUrls;
 import com.example.dllo.openeyes.tools.OkHttp;
 import com.example.dllo.openeyes.tools.OnHttpCallBack;

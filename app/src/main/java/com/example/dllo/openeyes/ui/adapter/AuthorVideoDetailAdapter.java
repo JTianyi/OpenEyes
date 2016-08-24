@@ -59,10 +59,6 @@ public class AuthorVideoDetailAdapter extends PagerAdapter {
         coverIv.setAnimation(mAnimation );
         mAnimation.start();
 
-
-
-
-
         String coverUrl=datas.get(position).getData().getCover().getFeed();
         PicassoInstance.getsInstance().setImage(coverUrl,coverIv);
 
