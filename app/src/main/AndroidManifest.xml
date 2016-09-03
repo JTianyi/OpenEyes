@@ -3,6 +3,7 @@
     package="com.example.dllo.openeyes">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BATTERY_STATS"/>
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -22,24 +23,17 @@
         <activity android:name=".ui.activity.BeforeSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
-
-
-        <activity android:name=".ui.activity.AuthorVideoActivity" />
-
-        <activity
-            android:name=".ui.activity.BeforeSelectionActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
-        <activity
-            android:name=".ui.activity.SearchActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
         <activity android:name=".ui.activity.FullShotActivity" />
         <activity android:name=".ui.activity.ExploreBannerActivity"/>
 
 
-        <activity android:name=".ui.activity.FullShotActivity"/>
         <activity android:name=".ui.activity.AuthorDetailActivity"/>
+        <activity android:name=".ui.activity.PlayVideoActivity"
+                  android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+                  android:screenOrientation="landscape"
+                  android:process=":vitamio"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                  android:windowSoftInputMode="stateAlwaysHidden"/>
 
 
     </application>

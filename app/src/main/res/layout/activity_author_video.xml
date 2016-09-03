@@ -114,7 +114,7 @@
                 android:layout_marginRight="17dp"
                 android:layout_marginTop="8dp"
                 android:background="@mipmap/landing_countdown_background"
-                android:src="@mipmap/three_mins" />
+                />
 
             <TextView
                 android:id="@+id/author_video_header_title"
@@ -122,7 +122,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/author_video_header_icon"
                 android:layout_toRightOf="@id/author_video_header_icon"
-                android:text="饭盒Foodlink"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -134,7 +133,6 @@
                 android:layout_alignBottom="@id/author_video_header_title"
                 android:layout_marginLeft="20sp"
                 android:layout_toRightOf="@id/author_video_header_title"
-                android:text="饭盒Foodlink"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
@@ -147,7 +145,6 @@
                 android:ellipsize="end"
                 android:maxEms="18"
                 android:singleLine="true"
-                android:text="饭盒话说多喝点水"
                 android:textColor="@android:color/white"
                 android:textSize="13sp" />
 
@@ -162,7 +159,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_below="@id/author_video_header_icon"
                 android:layout_marginLeft="17dp"
                 android:background="#d5d5d5" />
         </RelativeLayout>

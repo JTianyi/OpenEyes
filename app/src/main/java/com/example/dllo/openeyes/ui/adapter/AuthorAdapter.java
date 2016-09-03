@@ -21,7 +21,6 @@ import com.example.dllo.openeyes.tools.PicassoInstance;
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
 import com.example.dllo.openeyes.ui.activity.AuthorDetailActivity;
 import com.example.dllo.openeyes.ui.activity.AuthorVideoActivity;
-import com.example.dllo.openeyes.ui.activity.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;

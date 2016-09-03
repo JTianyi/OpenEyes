@@ -46,6 +46,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import io.vov.vitamio.BuildConfig;
+
 public class HomeActivity extends AbsBaseActivity implements View.OnClickListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;

@@ -1,5 +1,8 @@
 package com.example.dllo.openeyes.model.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
@@ -14,6 +17,8 @@ public class SelectionBean {
 
 
     private List<SectionListBean> sectionList;
+
+
 
     public long getDate() {
         return date;
@@ -247,7 +252,7 @@ public class SelectionBean {
                 this.data = data;
             }
 
-            public static class DataBean {
+            public static class DataBean implements Parcelable{
                 private String dataType;
                 private int id;
                 private String title;
@@ -322,6 +327,37 @@ public class SelectionBean {
                  */
 
                 private List<TagsBean> tags;
+
+                public DataBean() {
+
+                }
+
+                protected DataBean(Parcel in) {
+                    dataType = in.readString();
+                    id = in.readInt();
+                    title = in.readString();
+                    description = in.readString();
+                    text = in.readString();
+                    category = in.readString();
+                    playUrl = in.readString();
+                    duration = in.readInt();
+                    releaseTime = in.readLong();
+                    type = in.readString();
+                    idx = in.readInt();
+                    date = in.readLong();
+                }
+
+                public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+                    @Override
+                    public DataBean createFromParcel(Parcel in) {
+                        return new DataBean(in);
+                    }
+
+                    @Override
+                    public DataBean[] newArray(int size) {
+                        return new DataBean[size];
+                    }
+                };
 
                 public String getDataType() {
                     return dataType;
@@ -557,6 +593,27 @@ public class SelectionBean {
 
                 public void setTags(List<TagsBean> tags) {
                     this.tags = tags;
+                }
+
+                @Override
+                public int describeContents() {
+                    return 0;
+                }
+
+                @Override
+                public void writeToParcel(Parcel dest, int flags) {
+                    dest.writeString(dataType);
+                    dest.writeInt(id);
+                    dest.writeString(title);
+                    dest.writeString(description);
+                    dest.writeString(text);
+                    dest.writeString(category);
+                    dest.writeString(playUrl);
+                    dest.writeInt(duration);
+                    dest.writeLong(releaseTime);
+                    dest.writeString(type);
+                    dest.writeInt(idx);
+                    dest.writeLong(date);
                 }
 
                 public static class ProviderBean {
@@ -796,8 +853,11 @@ public class SelectionBean {
                     }
                 }
 
-                public class AuthorBean {
+                public static class AuthorBean {
                     private String name;
+                    private String icon;
+                    private String description;
+                    private int videoNum;
 
                     public String getName() {
                         return name;
@@ -805,6 +865,33 @@ public class SelectionBean {
 
                     public AuthorBean setName(String name) {
                         this.name = name;
+                        return this;
+                    }
+
+                    public String getIcon() {
+                        return icon;
+                    }
+
+                    public AuthorBean setIcon(String icon) {
+                        this.icon = icon;
+                        return this;
+                    }
+
+                    public String getDescription() {
+                        return description;
+                    }
+
+                    public AuthorBean setDescription(String description) {
+                        this.description = description;
+                        return this;
+                    }
+
+                    public int getVideoNum() {
+                        return videoNum;
+                    }
+
+                    public AuthorBean setVideoNum(int videoNum) {
+                        this.videoNum = videoNum;
                         return this;
                     }
                 }
@@ -912,6 +999,9 @@ public class SelectionBean {
                         private String playUrl;
                         private int duration;
                         private ChildCoverBean cover;
+                        private ChildAuthorBean author;
+                        private ChildConsumptionBean consumption;
+                        private List<ChildPlayInfoBean> playInfo;
 
                         public int getId() {
                             return id;
@@ -919,6 +1009,33 @@ public class SelectionBean {
 
                         public ChildDataBean setId(int id) {
                             this.id = id;
+                            return this;
+                        }
+
+                        public ChildAuthorBean getAuthor() {
+                            return author;
+                        }
+
+                        public ChildDataBean setAuthor(ChildAuthorBean author) {
+                            this.author = author;
+                            return this;
+                        }
+
+                        public List<ChildPlayInfoBean> getPlayInfo() {
+                            return playInfo;
+                        }
+
+                        public ChildDataBean setPlayInfo(List<ChildPlayInfoBean> playInfo) {
+                            this.playInfo = playInfo;
+                            return this;
+                        }
+
+                        public ChildConsumptionBean getConsumption() {
+                            return consumption;
+                        }
+
+                        public ChildDataBean setConsumption(ChildConsumptionBean consumption) {
+                            this.consumption = consumption;
                             return this;
                         }
 
@@ -1005,6 +1122,138 @@ public class SelectionBean {
 
                             public ChildCoverBean setBlurred(String blurred) {
                                 this.blurred = blurred;
+                                return this;
+                            }
+                        }
+
+                        public class ChildAuthorBean {
+                            private String name;
+                            private String icon;
+                            private String description;
+                            private int videoNum;
+
+                            public String getName() {
+                                return name;
+                            }
+
+                            public ChildAuthorBean setName(String name) {
+                                this.name = name;
+                                return this;
+                            }
+
+                            public String getIcon() {
+                                return icon;
+                            }
+
+                            public ChildAuthorBean setIcon(String icon) {
+                                this.icon = icon;
+                                return this;
+                            }
+
+                            public String getDescription() {
+                                return description;
+                            }
+
+                            public ChildAuthorBean setDescription(String description) {
+                                this.description = description;
+                                return this;
+                            }
+
+                            public int getVideoNum() {
+                                return videoNum;
+                            }
+
+                            public ChildAuthorBean setVideoNum(int videoNum) {
+                                this.videoNum = videoNum;
+                                return this;
+                            }
+
+
+
+                        }
+
+                        public class ChildConsumptionBean {
+                            private int collectionCount;
+                            private int shareCount;
+                            private int replyCount;
+
+                            public int getCollectionCount() {
+                                return collectionCount;
+                            }
+
+                            public ChildConsumptionBean setCollectionCount(int collectionCount) {
+                                this.collectionCount = collectionCount;
+                                return this;
+                            }
+
+                            public int getShareCount() {
+                                return shareCount;
+                            }
+
+                            public ChildConsumptionBean setShareCount(int shareCount) {
+                                this.shareCount = shareCount;
+                                return this;
+                            }
+
+                            public int getReplyCount() {
+                                return replyCount;
+                            }
+
+                            public ChildConsumptionBean setReplyCount(int replyCount) {
+                                this.replyCount = replyCount;
+                                return this;
+                            }
+                        }
+
+                        public class ChildPlayInfoBean {
+                            private int height;
+                            private int width;
+                            private String name;
+                            private String type;
+                            private String url;
+
+                            public int getHeight() {
+                                return height;
+                            }
+
+                            public ChildPlayInfoBean setHeight(int height) {
+                                this.height = height;
+                                return this;
+                            }
+
+                            public int getWidth() {
+                                return width;
+                            }
+
+                            public ChildPlayInfoBean setWidth(int width) {
+                                this.width = width;
+                                return this;
+                            }
+
+                            public String getName() {
+                                return name;
+                            }
+
+                            public ChildPlayInfoBean setName(String name) {
+                                this.name = name;
+                                return this;
+                            }
+
+                            public String getType() {
+                                return type;
+                            }
+
+                            public ChildPlayInfoBean setType(String type) {
+                                this.type = type;
+                                return this;
+                            }
+
+                            public String getUrl() {
+                                return url;
+                            }
+
+                            public ChildPlayInfoBean setUrl(String url) {
+                                this.url = url;
                                 return this;
                             }
                         }

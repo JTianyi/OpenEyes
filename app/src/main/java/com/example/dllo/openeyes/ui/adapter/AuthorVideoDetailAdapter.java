@@ -1,7 +1,9 @@
 package com.example.dllo.openeyes.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +17,11 @@ import com.example.dllo.openeyes.model.bean.AuthorFragmentBean;
 import com.example.dllo.openeyes.tools.DensityUtils;
 import com.example.dllo.openeyes.tools.PicassoInstance;
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
+import com.example.dllo.openeyes.ui.activity.PlayVideoActivity;
 
 import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by dllo on 16/8/16.
  */
@@ -46,7 +51,7 @@ public class AuthorVideoDetailAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         View view= LayoutInflater.from(context).inflate(R.layout.item_author_video_detail,container,false);
         coverIv = (ImageView) view.findViewById(R.id.author_video_detail_cover_feed);
 
@@ -60,6 +65,7 @@ public class AuthorVideoDetailAdapter extends PagerAdapter {
         mAnimation.start();
 
         String coverUrl=datas.get(position).getData().getCover().getFeed();
+
         PicassoInstance.getsInstance().setImage(coverUrl,coverIv);
 
         //获取屏幕宽度
@@ -69,7 +75,18 @@ public class AuthorVideoDetailAdapter extends PagerAdapter {
         //修改布局中的属性
         layoutParams.height = height*11 / 20;
         //重新设置修改后的布局给控件
-        coverIv.setLayoutParams(layoutParams);
+        final AuthorFragmentBean.ItemListBean.DataBean.NItemListBean.NDataBean playInfoBean=datas.get(position).getData();
+        coverIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, PlayVideoActivity.class);
+                intent.putExtra("playUrl",datas.get(position).getData().getPlayUrl());
+                intent.putExtra("playInfo",playInfoBean);
+                context.startActivity(intent);
+
+
+            }
+        });
         container.addView(view);
         return view;
     }
