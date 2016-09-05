@@ -20,9 +20,15 @@ import java.util.ArrayList;
 public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.SelectionReHolder> {
     private ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean> arrayList;
     private Context context;
+    private OnRecyclerViewClickListener listener;
 
     public SelectionReAdapter(Context context) {
         this.context = context;
+    }
+
+    public SelectionReAdapter setListener(OnRecyclerViewClickListener listener) {
+        this.listener = listener;
+        return this;
     }
 
     public SelectionReAdapter setArrayList(ArrayList<SelectionBean.SectionListBean.ItemListBean.DataBean.ChildItemListBean.ChildDataBean> arrayList) {
@@ -39,7 +45,7 @@ public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.
     }
 
     @Override
-    public void onBindViewHolder(SelectionReHolder holder, int position) {
+    public void onBindViewHolder(final SelectionReHolder holder, int position) {
         holder.typeTV.setText(arrayList.get(position).getCategory());
         int duration=arrayList.get(position).getDuration();
         int min=duration/60;
@@ -56,6 +62,16 @@ public class SelectionReAdapter extends RecyclerView.Adapter<SelectionReAdapter.
         }
         holder.titleTV.setText(arrayList.get(position).getTitle());
         PicassoInstance.getsInstance().setImage(arrayList.get(position).getCover().getFeed(),holder.bacIV);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos=holder.getAdapterPosition();
+                listener.OnRecyclerViewClick(pos);
+            }
+        });
+
+
     }
 
     @Override

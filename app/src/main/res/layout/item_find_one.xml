@@ -15,10 +15,17 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:layout_weight="1"
+<<<<<<< HEAD
 
             android:layout_margin="1.5dp"
             />
         <com.example.dllo.openeyes.tools.RecyclableImageView
+=======
+            android:layout_margin="1.5dp"
+            />
+        <ImageView
+
+>>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
             android:id="@+id/find_topic_iv"
             android:src="@mipmap/ic_launcher"
             android:layout_width="0dp"
@@ -34,8 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
+<<<<<<< HEAD
 />
 
 
+=======
+        />
+>>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
 
 </LinearLayout>

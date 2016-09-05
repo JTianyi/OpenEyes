@@ -63,6 +63,7 @@ public class AuthorDetailDateAdapter extends RecyclerView.Adapter<AuthorDetailDa
         holder.nameTv.setText(datas.get(position).getData().getAuthor().getName());
         holder.durationTv.setText(cateStr + "  /  " + m + "′ " + s + "″");
         PicassoInstance.getsInstance().setImage(coverUrl,holder.coverIv);
+
 //        //获取屏幕宽度
 //        int height = ScreenUtilsInstance.getsInstance().getScreenHeight(context);
 //        //将dp转换成px

@@ -3,8 +3,12 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+<<<<<<< HEAD
 
     <com.example.dllo.openeyes.tools.RecyclableImageView
+=======
+        <com.example.dllo.openeyes.tools.RecyclableImageView
+>>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
         android:id="@+id/selection_ls_bac_iv"
         android:layout_width="match_parent"
         android:layout_height="200dp"

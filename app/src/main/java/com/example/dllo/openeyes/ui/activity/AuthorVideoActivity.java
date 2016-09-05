@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -48,7 +49,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
     private CircleImageView iconCiIv;
     private TextView headerTitleTv, headerDescriptionTv, headerSubtitleTv;//header的相关文字
     private TextView favoritesTv, shareTv, replyTv, downloadTv;
-    private RelativeLayout videoTexts;
+    private RelativeLayout videoTexts,headerRe;
 
     @Override
     protected int setLayout() {
@@ -76,6 +77,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
         downloadTv = byView(R.id.author_video_download);
         openDetailTv = byView(R.id.author_video_open_detail);
         videoTexts = byView(R.id.author_video_texts);
+        headerRe=byView(R.id.header);
 
     }
 
@@ -85,6 +87,9 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
         Intent intent = getIntent();
         dataBean = intent.getParcelableExtra("videos");
         position = intent.getIntExtra("pos", 0);
+
+
+
         setText();
         videoBackIv.setOnClickListener(this);
         adapter = new AuthorVideoDetailAdapter(this);
@@ -99,6 +104,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
         //重新设置修改后的布局给控件
         blurredIv.setLayoutParams(layoutParams);
         blurredNexIv.setLayoutParams(layoutParams);
+
 
         adapter.setDatas(dataBean.getItemList());
         viewPager.setAdapter(adapter);
@@ -176,10 +182,18 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
                 int favoritesStr = nDataBean.getConsumption().getCollectionCount();
                 int shareStr = nDataBean.getConsumption().getShareCount();
                 int replyStr = nDataBean.getConsumption().getReplyCount();
-                PicassoInstance.getsInstance().setImage(dataBean.getHeader().getIcon(), iconCiIv);
-                headerTitleTv.setText(dataBean.getHeader().getTitle());
-                headerSubtitleTv.setText(dataBean.getHeader().getSubTitle());
-                headerDescriptionTv.setText(dataBean.getHeader().getDescription());
+                AuthorFragmentBean.ItemListBean.DataBean.NItemListBean.NDataBean.AuthorBean authorBean=dataBean.getItemList().get(position).getData().getAuthor();
+                if (authorBean!=null){
+                    headerTitleTv.setText(authorBean.getName());
+                    headerSubtitleTv.setText(authorBean.getVideoNum()+"个视频");
+                    headerDescriptionTv.setText(authorBean.getDescription());
+                    PicassoInstance.getsInstance().setImage(authorBean.getIcon(), iconCiIv);
+                    if (headerTitleTv.getText().length()==0){
+                        headerRe.setVisibility(View.GONE);
+                    }else {
+                        headerRe.setVisibility(View.VISIBLE);
+                    }
+                }
                 titleTpTv.start(titleStr);
                 descriptionTpTv.start(descriptionStr);
                 cateAndDuraTpTv.start(cateStr + "  /  " + m + "′ " + s + "″");
@@ -211,6 +225,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
 
             }
         });
+        
 
 
     }
@@ -229,10 +244,18 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
         int favoritesStr = dataBean.getItemList().get(position).getData().getConsumption().getCollectionCount();
         int shareStr = dataBean.getItemList().get(position).getData().getConsumption().getShareCount();
         int replyStr = dataBean.getItemList().get(position).getData().getConsumption().getReplyCount();
-        PicassoInstance.getsInstance().setImage(dataBean.getHeader().getIcon(), iconCiIv);
-        headerTitleTv.setText(dataBean.getHeader().getTitle());
-        headerSubtitleTv.setText(dataBean.getHeader().getSubTitle());
-        headerDescriptionTv.setText(dataBean.getHeader().getDescription());
+        AuthorFragmentBean.ItemListBean.DataBean.NItemListBean.NDataBean.AuthorBean authorBean=dataBean.getItemList().get(position).getData().getAuthor();
+        if (authorBean!=null){
+            headerTitleTv.setText(authorBean.getName());
+            headerSubtitleTv.setText(authorBean.getVideoNum()+"个视频");
+            headerDescriptionTv.setText(authorBean.getDescription());
+            PicassoInstance.getsInstance().setImage(authorBean.getIcon(), iconCiIv);
+            if (headerTitleTv.getText().length()==0){
+                headerRe.setVisibility(View.GONE);
+            }else {
+                headerRe.setVisibility(View.VISIBLE);
+            }
+        }
         titleTpTv.start(titleStr);
         descriptionTpTv.start(descriptionStr);
         cateAndDuraTpTv.start(cateStr + "  /  " + m + "′ " + s + "″");
