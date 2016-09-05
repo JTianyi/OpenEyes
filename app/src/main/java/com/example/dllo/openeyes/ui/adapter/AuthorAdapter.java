@@ -30,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/8/15.
- *
+ *作者页面的ListView的adapter
  * @author jiangtianyi
  */
 public class AuthorAdapter extends BaseAdapter {
@@ -151,6 +151,10 @@ public class AuthorAdapter extends BaseAdapter {
                     public void onClick(View v) {
                         Intent intent=new Intent(context,AuthorDetailActivity.class);
                         intent.putExtra("id",bean.getItemList().get(position).getData().getId());
+                        intent.putExtra("des",bean.getItemList().get(position).getData().getDescription());
+                        intent.putExtra("name",bean.getItemList().get(position).getData().getTitle());
+                        intent.putExtra("namebar",bean.getItemList().get(position).getData().getTitle());
+                        intent.putExtra("icon",bean.getItemList().get(position).getData().getIcon());
                         context.startActivity(intent);
                     }
                 });
@@ -184,7 +188,12 @@ public class AuthorAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Intent intent=new Intent(context,AuthorDetailActivity.class);
+//                        intent.putExtra("header",)
                         intent.putExtra("id",bean.getItemList().get(position).getData().getHeader().getId());
+                        intent.putExtra("des",bean.getItemList().get(position).getData().getHeader().getDescription());
+                        intent.putExtra("name",bean.getItemList().get(position).getData().getHeader().getTitle());
+                        intent.putExtra("namebar",bean.getItemList().get(position).getData().getHeader().getTitle());
+                        intent.putExtra("icon",bean.getItemList().get(position).getData().getHeader().getIcon());
                         context.startActivity(intent);
                     }
                 });

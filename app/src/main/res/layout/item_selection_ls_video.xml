@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-=======
-    android:layout_width="match_parent"
 
-    android:layout_height="wrap_content">
-
->>>>>>> feature/发现详情二级界面
     <com.example.dllo.openeyes.tools.RecyclableImageView
         android:id="@+id/selection_ls_bac_iv"
         android:layout_width="match_parent"

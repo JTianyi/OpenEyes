@@ -51,6 +51,7 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginRight="40dp"
                         android:layout_marginTop="52dp"
+                        android:text="dgasdfjadsfoia"
                         android:textSize="13sp" />
 
                 </RelativeLayout>
@@ -212,6 +213,7 @@
             android:visibility="gone" />
 
         <ImageView
+            android:id="@+id/author_detail_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

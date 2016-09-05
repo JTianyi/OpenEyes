@@ -17,11 +17,13 @@ import android.widget.TextView;
 
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.model.bean.AuthorFragmentBean;
+import com.example.dllo.openeyes.model.bean.SelectionBean;
 import com.example.dllo.openeyes.tools.DensityUtils;
 import com.example.dllo.openeyes.tools.PicassoInstance;
 import com.example.dllo.openeyes.tools.RecyclableImageView;
 import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
 import com.example.dllo.openeyes.ui.adapter.AuthorVideoDetailAdapter;
+import com.example.dllo.openeyes.view.DepthPagerTransfromer;
 import com.example.dllo.openeyes.view.TypeTextView;
 
 import java.text.DecimalFormat;
@@ -37,6 +39,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private AuthorVideoDetailAdapter adapter;
+    private SelectionBean.SectionListBean beanddd;
     private AuthorFragmentBean.ItemListBean.DataBean dataBean;
     private int position;
     private RecyclableImageView blurredIv, blurredNexIv;//下方模糊图片,下一张加载图片
@@ -99,6 +102,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
 
         adapter.setDatas(dataBean.getItemList());
         viewPager.setAdapter(adapter);
+        viewPager.setPageTransformer(true,new DepthPagerTransfromer());
         //设置tablayout的懒加载页数
         viewPager.setOffscreenPageLimit(5);
         viewPager.setCurrentItem(position);
@@ -214,6 +218,7 @@ public class AuthorVideoActivity extends AbsBaseActivity implements View.OnClick
 
     private void setText() {
         String blurredUrl = dataBean.getItemList().get(position).getData().getCover().getBlurred();
+        blurredIv.setScaleY(-1);
         PicassoInstance.getsInstance().setImage(blurredUrl, blurredIv);
         String descriptionStr = dataBean.getItemList().get(position).getData().getDescription();
         String titleStr = dataBean.getItemList().get(position).getData().getTitle();

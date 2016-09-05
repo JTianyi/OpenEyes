@@ -5,17 +5,18 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/my_open_eye_iv"
+        android:id="@+id/mine_login_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:src="@mipmap/my_open_eye_logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="15sp"
         android:text="点击登录即可发表评论" />
 
     <LinearLayout
@@ -24,67 +25,146 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/my_collect_heart_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/my_collect_heart" />
+                    android:src="@mipmap/my_collect_heart"
+                    android:layout_gravity="center_vertical"
+                    android:adjustViewBounds="true"
+                    />
 
                 <TextView
                     android:id="@+id/my_collect_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
                     android:layout_toRightOf="@id/my_collect_heart_iv"
+                    android:layout_marginRight="12dp"
+                    android:textSize="15sp"
                     android:text="我的收藏" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
+        </RelativeLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#d5d5d5"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/my_comment_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/my_comment" />
+                    android:src="@mipmap/my_comment"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="13dp"/>
 
                 <TextView
                     android:id="@+id/my_comment_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/my_comment_iv"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@id/my_collect_heart_iv"
+                    android:layout_marginRight="10dp"
+                    android:textSize="15sp"
                     android:text="我的评论" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
-
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#444444"
+        />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="我的消息"
+         android:textSize="15sp"
+         android:layout_marginTop="50dp"
+         android:layout_gravity="center"
+         />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的缓存"
+            android:textSize="15sp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="意见反馈"
+            android:textSize="15sp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我要投稿"
+            android:textSize="15sp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</ScrollView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verson 2.1.1.126"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
+
 </LinearLayout>
