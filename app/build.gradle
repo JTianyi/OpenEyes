@@ -30,5 +30,6 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.15'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.youth.banner:banner:+'
+    compile files('libs/lite-orm-1.9.2.jar')
 
 }

@@ -5,12 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.example.dllo.openeyes.R;
 import com.example.dllo.openeyes.ui.adapter.FullShotAdapter;
 import com.example.dllo.openeyes.ui.fragment.AccordShareFragment;
 import com.example.dllo.openeyes.ui.fragment.AccordTimeFragment;
-
 import java.util.ArrayList;
 
 /**

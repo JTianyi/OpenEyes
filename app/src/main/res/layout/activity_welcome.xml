@@ -2,6 +2,59 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+    <com.example.dllo.openeyes.tools.RecyclableImageView
+        android:id="@+id/welcome_iv"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+    <com.example.dllo.openeyes.tools.RecyclableImageView
+        android:id="@+id/welcome_open_eye_iv"
+        android:src="@mipmap/welcome_eye"
+        android:scaleX="3"
+        android:scaleY="3"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.example.dllo.openeyes.view.TitleTextView
+        android:id="@+id/welcome_english_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eyepetizer"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/welcome_open_eye_iv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"/>
+    <TextView
+        android:id="@+id/welcome_open_eye_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开眼"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/welcome_english_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+    <com.example.dllo.openeyes.view.TitleTextView
+        android:id="@+id/welcome_daily_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily appelizers for your eyes.Bon eyepelit"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/welcome_open_eye_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="每日精选视频推介, 让你大开眼界。"
+        android:layout_below="@+id/welcome_daily_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/darker_gray"/>
+
+
 
 </RelativeLayout>

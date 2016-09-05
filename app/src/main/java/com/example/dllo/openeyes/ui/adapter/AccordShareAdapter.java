@@ -18,6 +18,8 @@ import com.example.dllo.openeyes.tools.ScreenUtilsInstance;
 
 /**
  * Created by mac on 16/8/17.
+ * 根据分享的适配器
+ * @author wangweijian
  */
 public class AccordShareAdapter extends BaseAdapter {
     private AccordBean accordBean;
@@ -66,7 +68,7 @@ public class AccordShareAdapter extends BaseAdapter {
         holder.accordSecondsTv.setText(dataBean.getDuration() % 60 + "″");
         if (dataBean.getAuthor()!=null) {
             holder.accordNameTv.setText(dataBean.getAuthor().getName());
-            dataBean = accordBean.getItemList().get(position).getData();
+//            dataBean = accordBean.getItemList().get(position).getData();
         }else {
             holder.accordNameTv.setText("");
         }

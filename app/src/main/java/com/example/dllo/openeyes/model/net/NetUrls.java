@@ -48,7 +48,11 @@ public final class NetUrls {
     /**
      * 轮播图探索的Url
      */
-    public static final String EXPLORE_BANNER_URL = "http://baobab.wandoujia.com/api/v3/recommend?udid=fc33d7ade6d5482bba5eeae629440fe0c6ac1a9e&vc=126&vn=2.4.1&deviceModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=22";
+    public final static String EXPLORE_BANNER_URL = "http://baobab.wandoujia.com/api/v3/recommend?udid=fc33d7ade6d5482bba5eeae629440fe0c6ac1a9e&vc=126&vn=2.4.1&deviceModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920&first_channel=eyepetizer_wandoujia_market&last_channel=eyepetizer_wandoujia_market&system_version_code=22";
+    /**
+     * 欢迎页Url
+     */
+    public final static String WELCOME_URL = "http://baobab.wandoujia.com/api/v2/configs?model=Android&udid=0cabbeb79d7941f88fd57610de6665101860dbcf&vc=89&vn=1.13.1&deviceModel=Google%20Nexus%205%20-%205.1.0%20-%20API%2022%20-%201080x1920&first_channel=eyepetizer_360_market&last_channel=eyepetizer_360_market";
 
 
 
