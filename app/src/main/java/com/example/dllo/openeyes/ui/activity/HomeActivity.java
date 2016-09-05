@@ -94,6 +94,7 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
         changeTitleBarIcon();
         titleTV.setOnClickListener(this);
         searchIv.setOnClickListener(this);
+        menuIv.setOnClickListener(this);
 
     }
 
@@ -160,6 +161,9 @@ public class HomeActivity extends AbsBaseActivity implements View.OnClickListene
                 searchLin.setVisibility(View.GONE);
                 flag=true;
                 popupWindow.dismiss();
+                break;
+            case R.id.title_bar_menu:
+                goTo(this,SettingActivity.class);
                 break;
         }
 

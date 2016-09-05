@@ -30,8 +30,12 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.15'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.youth.banner:banner:+'
+<<<<<<< HEAD
     compile project(':vitamio')
     compile 'com.github.ctiao:DanmakuFlameMaster:0.4.5'
     compile 'com.kogitune:pre-lollipop-activity-transition:1.3.0'
+=======
+    compile files('libs/lite-orm-1.9.2.jar')
+>>>>>>> feature/轮播图精彩探索搭建中
 
 }

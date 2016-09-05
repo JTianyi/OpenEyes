@@ -43,6 +43,7 @@ public class ExploreBannerActivity extends AbsBaseActivity implements View.OnCli
         adapter = new ExploreBannerAdapter(this);
         //加载探索界面数据
         addExploreData();
+
         //设置形式
         viewPager.setPageTransformer(true, new HorizontalStackTransformer(this));
         //设置限制张数
