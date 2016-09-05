@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/8/15.
+ * 作者页面横划的 RecyclerView的adapter
  */
 public class AuthorVideoAdapter extends RecyclerView.Adapter<AuthorVideoAdapter.VideoHolder> {
     private Context context;

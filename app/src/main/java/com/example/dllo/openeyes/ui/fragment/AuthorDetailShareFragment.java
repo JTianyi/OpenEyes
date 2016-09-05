@@ -32,6 +32,9 @@ public class AuthorDetailShareFragment extends AbsBaseFragment {
     private AuthorDetailDateAdapter adapter;
     private RecyclerView recyclerView;
     private int id;
+//    private CircleImageView iconCirIv;//协调布局的图片
+//    private CenterTextView descriptionCenTv;
+//    private TextView nameTv, nameBarTv;
 
     @Override
     protected int setLayout() {
@@ -41,7 +44,10 @@ public class AuthorDetailShareFragment extends AbsBaseFragment {
     @Override
     protected void initViews(View view) {
         recyclerView = byView(R.id.author_detail_recyclerView);
-
+//        iconCirIv = (CircleImageView) getActivity().findViewById(R.id.author_detail_icon);
+//        descriptionCenTv = (CenterTextView) getActivity().findViewById(R.id.author_detail_description);
+//        nameTv = (TextView) getActivity().findViewById(R.id.author_detail_name);
+//        nameBarTv = (TextView) getActivity().findViewById(R.id.author_detail_name_bar);
     }
 
     @Override
@@ -66,6 +72,10 @@ public class AuthorDetailShareFragment extends AbsBaseFragment {
                         adapter.setDatas((ArrayList<AuthorDetailBean.ItemListBean>) bean.getItemList());
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
                         recyclerView.setAdapter(adapter);
+//                        nameTv.setText(bean.getPgcInfo().getName());
+//                        nameBarTv.setText(bean.getPgcInfo().getName());
+//                        PicassoInstance.getsInstance().setImage(bean.getPgcInfo().getIcon(),iconCirIv);
+//                        descriptionCenTv.setText(bean.getPgcInfo().getDescription());
 
                     }
                     @Override

@@ -1,6 +1,7 @@
 package com.example.dllo.openeyes.ui.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,9 +34,15 @@ public class AuthorDetailDateFragment extends AbsBaseFragment {
     private AuthorDetailDateAdapter adapter;
     private RecyclerView recyclerView;
     private int id;
-    private CircleImageView iconCirIv;//协调布局的图片
-    private CenterTextView descriptionCenTv;
-    private TextView nameTv, nameBarTv;
+
+    public static AuthorDetailDateFragment newInstance(String url) {
+
+        Bundle args = new Bundle();
+        args.putString("URL", url);
+        AuthorDetailDateFragment fragment = new AuthorDetailDateFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {
@@ -45,16 +52,12 @@ public class AuthorDetailDateFragment extends AbsBaseFragment {
     @Override
     protected void initViews(View view) {
         recyclerView = byView(R.id.author_detail_recyclerView);
-        iconCirIv = (CircleImageView) getActivity().findViewById(R.id.author_detail_icon);
-        descriptionCenTv = (CenterTextView) getActivity().findViewById(R.id.author_detail_description);
-        nameTv = (TextView) getActivity().findViewById(R.id.author_detail_name);
-        nameBarTv = (TextView) getActivity().findViewById(R.id.author_detail_name_bar);
+
     }
 
     @Override
     protected void initDatas() {
-        Intent intent = getActivity().getIntent();
-        id = intent.getIntExtra("id", 0);
+
         //加载按时间排序的界面的数据
         addDateData();
     }
@@ -63,7 +66,10 @@ public class AuthorDetailDateFragment extends AbsBaseFragment {
 
         bean = new AuthorDetailBean();
 
-        OkHttp.getInstance().startRequest(NetUrls.AUTHOR_DETAIL_HEAD_URL + id + NetUrls.AUTHOR_DETAIL_DATE_URL + NetUrls.AUTHOR_DETAIL_FOOT_URL
+        Bundle args = getArguments();
+        String url = args.getString("URL");
+
+        OkHttp.getInstance().startRequest(url
                 , AuthorDetailBean.class, new OnHttpCallBack<AuthorDetailBean>() {
 
                     @Override
@@ -73,10 +79,7 @@ public class AuthorDetailDateFragment extends AbsBaseFragment {
                         adapter.setDatas((ArrayList<AuthorDetailBean.ItemListBean>) bean.getItemList());
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
                         recyclerView.setAdapter(adapter);
-                        descriptionCenTv.setText(bean.getPgcInfo().getDescription());
-                        nameTv.setText(bean.getPgcInfo().getName());
-                        nameBarTv.setText(bean.getPgcInfo().getName());
-                        PicassoInstance.getsInstance().setImage(bean.getPgcInfo().getIcon(),iconCirIv);
+
 
                     }
 

@@ -18,6 +18,7 @@
         android:layout_height="280dp"
         android:layout_alignParentBottom="true"
         android:scaleType="centerCrop"
+        android:scaleY="-1"
         android:src="@mipmap/ceshi"
         />
 

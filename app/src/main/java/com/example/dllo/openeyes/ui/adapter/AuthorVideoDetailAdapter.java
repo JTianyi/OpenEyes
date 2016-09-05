@@ -24,6 +24,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/8/16.
+ * 视频待播放页面的ViewPager的adapter
  */
 public class AuthorVideoDetailAdapter extends PagerAdapter {
     private ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean> datas;
@@ -38,6 +39,7 @@ public class AuthorVideoDetailAdapter extends PagerAdapter {
     public void setDatas(ArrayList<AuthorFragmentBean.ItemListBean.DataBean.NItemListBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
+
     }
 
     @Override
@@ -73,7 +75,7 @@ public class AuthorVideoDetailAdapter extends PagerAdapter {
         //获取控件的布局
         ViewGroup.LayoutParams layoutParams = coverIv.getLayoutParams();
         //修改布局中的属性
-        layoutParams.height = height*11 / 20;
+        layoutParams.height = height*26 /51;
         //重新设置修改后的布局给控件
         final AuthorFragmentBean.ItemListBean.DataBean.NItemListBean.NDataBean playInfoBean=datas.get(position).getData();
         coverIv.setOnClickListener(new View.OnClickListener() {
