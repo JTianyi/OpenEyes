@@ -18,9 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         <activity android:name=".ui.activity.AuthorVideoActivity" />
         <activity
             android:name=".ui.activity.BeforeSelectionActivity"
@@ -30,18 +27,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".ui.activity.FullShotActivity" />
         <activity android:name=".ui.activity.ExploreBannerActivity"/>
-=======
->>>>>>> 60b2fe82c54d8ba55ef7d424ccf5d2649616a468
-
-        <activity android:name=".ui.activity.AuthorVideoActivity"/>
-        <activity android:name=".ui.activity.BeforeSelectionActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
-        <activity android:name=".ui.activity.FullShotActivity" />
-        <activity android:name=".ui.activity.ExploreBannerActivity"/>
-
-
->>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
         <activity android:name=".ui.activity.AuthorDetailActivity"/>
         <activity android:name=".ui.activity.PlayVideoActivity"
                   android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
@@ -50,7 +35,6 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                   android:windowSoftInputMode="stateAlwaysHidden"/>
 
-=======
         <activity android:name=".ui.activity.AuthorVideoActivity" />
         <activity
             android:name=".ui.activity.BeforeSelectionActivity"
@@ -63,12 +47,6 @@
         <activity android:name=".ui.activity.AuthorDetailActivity" />
         <activity android:name=".ui.activity.HomeActivity"/>
         <activity android:name=".ui.activity.SettingActivity"/>
->>>>>>> feature/轮播图精彩探索搭建中
-
-<<<<<<< HEAD
-
-=======
->>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
     </application>
 
 </manifest>

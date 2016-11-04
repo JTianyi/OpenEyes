@@ -51,8 +51,11 @@ import com.example.dllo.openeyes.view.HeaderGridView;
 import com.youth.banner.Banner;
 
 import com.example.dllo.openeyes.R;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerClickListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dllo on 16/8/12.
@@ -67,7 +70,7 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
     private FindAdapter findAdapter;
     private Banner banner;
     private BackTopBroadcast backTopBroadcast;
-    private String[] bannerUrls;
+    private List<String> bannerUrls;
 
     @Override
     protected int setLayout() {
@@ -124,9 +127,9 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
         View view = LayoutInflater.from(context).inflate(R.layout.item_find_banner, null);
         banner = (Banner) view.findViewById(R.id.find_banner);
         //设置指示器(小圆点)
-        banner.setBannerStyle(Banner.CIRCLE_INDICATOR);
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         //设置位置
-        banner.setIndicatorGravity(Banner.CENTER);
+        banner.setIndicatorGravity(BannerConfig.CENTER);
         banner.isAutoPlay(true);
         //加到头布局
         headerGridView.addHeaderView(view);
@@ -139,13 +142,14 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
         //重新设置给控件
         banner.setLayoutParams(layoutParams);
         //给banner设置点击事件
-        banner.setOnBannerClickListener(new Banner.OnBannerClickListener() {
+        banner.setOnBannerClickListener(new OnBannerClickListener() {
             @Override
-            public void OnBannerClick(View view, int position) {
-                if (position==bannerUrls.length){
-                goTo(context, ExploreBannerActivity.class);
+            public void OnBannerClick(int position) {
+                if (position==bannerUrls.size()){
+                    goTo(context, ExploreBannerActivity.class);
                 }
             }
+
         });
     }
 
@@ -171,9 +175,9 @@ public class FindFragment extends AbsBaseFragment implements View.OnClickListene
                 }
                 findAdapter.setBeanArrayList(beanArrayList);
                 headerGridView.setAdapter(findAdapter);
-                bannerUrls = new String[findBean.getItemList().get(0).getData().getItemList().size()];
+                bannerUrls = new ArrayList<String>();
                 for (int i = 0; i < findBean.getItemList().get(0).getData().getItemList().size(); i++) {
-                    bannerUrls[i] = findBean.getItemList().get(0).getData().getItemList().get(i).getData().getImage();
+                    bannerUrls.add(findBean.getItemList().get(0).getData().getItemList().get(i).getData().getImage());
                     banner.setImages(bannerUrls);
                 }
                 //加载1 ,2位置的数据

@@ -13,46 +13,17 @@
             android:id="@+id/find_top_iv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:scaleType="fitXY"
-            android:layout_weight="1"
-<<<<<<< HEAD
-
-            android:layout_margin="1.5dp"
-            />
-        <com.example.dllo.openeyes.tools.RecyclableImageView
-=======
-            android:layout_margin="1.5dp"
-            />
-        <ImageView
-
-<<<<<<< HEAD
-=======
             android:layout_margin="1.5dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
 
         <com.example.dllo.openeyes.tools.RecyclableImageView
->>>>>>> feature/轮播图精彩探索搭建中
-=======
->>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
->>>>>>> 60b2fe82c54d8ba55ef7d424ccf5d2649616a468
             android:id="@+id/find_topic_iv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_weight="1"
-=======
->>>>>>> feature/轮播图精彩探索搭建中
-            android:layout_margin="1.5dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-<<<<<<< HEAD
             />
-=======
-            android:src="@mipmap/ic_launcher" />
->>>>>>> feature/轮播图精彩探索搭建中
     </LinearLayout>
 
     <com.example.dllo.openeyes.tools.RecyclableImageView
@@ -60,20 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-<<<<<<< HEAD
-<<<<<<< HEAD
         />
-=======
-        android:src="@mipmap/ic_launcher" />
-
->>>>>>> feature/轮播图精彩探索搭建中
-=======
-/>
-
-
-=======
-        />
->>>>>>> f79bf8b511886280a5d7a1101ade5eaa7e66a35c
->>>>>>> 60b2fe82c54d8ba55ef7d424ccf5d2649616a468
 
 </LinearLayout>
